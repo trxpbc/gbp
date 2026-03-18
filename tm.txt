@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type='text/javascript'>
+// Disable Right Click
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+// Disable Keyboard Shortcuts (Ctrl+U, Ctrl+S, Ctrl+Shift+I, F12)
+document.onkeydown = function(e) {
+    if (e.keyCode == 123) { return false; } // F12
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+    if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) { return false; }
+};
+</script> 
+  <script type='text/javascript'>
+  // Check if "protube" is NOT in the URL
+  if (!window.location.href.toLowerCase().includes("maint")) {
+    // Redirect to your backup or example URL
+    window.location.replace("https://currentdateonline.blogspot.com/?m=2&adx=true");
+  }
+</script>
+  <script type='text/javascript'>
+  // Check if the current URL is the homepage and doesn't already have the parameter
+  if (window.location.href == "https://com-jio-media-jiotvplus-st.blogspot.com/?m=2" || 
+      window.location.href == "https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php") {
+    window.location.href = "https://currentdateonline.blogspot.com/?adx=true";
+  }
+</script>
+  
+  <script type='text/javascript'>
+  // Check if the current URL is the homepage and doesn't already have the parameter
+  if (window.location.href == "https://com-jio-media-jiotvplus-st.blogspot.com/" || 
+      window.location.href == "https://com-jio-media-jiotvplus-st.blogspot.com/?m=1") {
+    window.location.href = "https://currentdateonline.blogspot.com/?adx=true";
+  }
+</script>
+    <title>JioTV+</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --gradient-focus: linear-gradient(90deg, #4f46e5, #ec4899, #f59e0b);
+            --pill-bg: rgba(255, 255, 255, 0.08);
+            --color-text: #ffffff;
+            --color-background-light: rgba(255, 255, 255, 0.12);
+            --color-border: rgba(255, 255, 255, 0.4);
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-dark);
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 15px 20px 10px;
+            box-sizing: border-box;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo-area { display: flex; align-items: center; flex-shrink: 0; }
+        .brand-logo { width: 42px; height: 42px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); }
+
+        /* --- PILLS --- */
+        .nav-pills {
+            display: flex;
+            gap: 12px;
+            background-color: var(--pill-bg);
+            padding: 6px 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+            scrollbar-width: none;
+            flex: 1;
+            margin: 0 20px;
+        }
+        .nav-pills::-webkit-scrollbar { display: none; }
+
+        .pill {
+            text-decoration: none;
+            color: #bbb;
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            outline: none;
+        }
+
+        .pill.active, .pill:focus {
+            background: var(--gradient-focus) !important;
+            color: white !important;
+            border-color: #ffffff !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+        }
+
+        /* --- SEARCH BAR (FIXED RIGHT MARGIN) --- */
+        .nav-utils {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Taaki content right-aligned rahe */
+            min-width: 200px; /* Space reserve rakhta hai */
+            margin-right: 25px; /* Aapka requested margin */
+        }
+
+        .header__search-wrapper {
+            position: relative;
+            width: 160px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Focus hone par search bar right ki taraf nahi, left ki taraf badhega */
+        .header__search-wrapper:focus-within {
+            width: 250px; 
+        }
+
+        .header__search-input {
+            width: 100%;
+            padding: 10px 40px 10px 18px;
+            font-size: 14px;
+            border-radius: 25px;
+            border: 2px solid rgba(255,255,255,0.15);
+            background: var(--color-background-light);
+            color: white;
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        /* Remote Focus Effect */
+        .header__search-input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .header__search-icon {
+            position: absolute;
+            right: 7px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            pointer-events: none;
+        }
+
+        @media (max-width: 600px) {
+            .nav-utils { min-width: auto; margin-right: 15px; }
+            .header__search-wrapper { width: 45px; }
+            .header__search-wrapper:focus-within { width: 140px; }
+        }
+    </style>
+</head>  
+<body>
+
+    <nav class="navbar">
+        <div class="logo-area">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKcdwOUZBnNY0tD4LOGuiRE8ACBod9QzXvNba4kkEQGuKW6nkamtqnwuBCmbxLm1ScfjegKRahnKMa9BAT_T3S8cbwlEAIV6lMSoBP20hbGNriomw1592f-oQTovpNLG2hsy9NY5jcoTdemjNoWT-gPxRr_x6RqvBi6sJnO-4NGkl7y62BsDCR-RC8fyw/s1600/IPTVLogo.png" class="brand-logo">
+        </div>
+        <div class="nav-pills" id="pillContainer">
+            
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/mus&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-mus" tabindex="0">Music Channel</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/mov&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-mov" tabindex="0">Movies Channel</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Nws&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-nws" tabindex="0">News Channel</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/sprts&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jtv.m3u" class="pill" id="btn-sprts" tabindex="0">Sports Channel</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/kds&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-kds" tabindex="0">Kids Channel</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Entr&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-entr" tabindex="0">Entertainment</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jtv&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-vot" tabindex="0">Jio Live TV</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/vott&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-vott" tabindex="0">Voot Live TV</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/slivd&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-slivd" tabindex="0">Sony LIV TV</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/z5s&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-z5s" tabindex="0">ZEE5 Live TV</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/hstr&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jtv.m3u" class="pill" id="btn-hstr" tabindex="0">Jio Hotstar TV</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jcinma&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-jcinma" tabindex="0">Jio Cinema TV</a>
+            <a href="https://com-jio-media-jiotvplus-ct.blogspot.com/?m=jio.php&status=TEST" class="pill">HD IPTV PLAYER</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Lfst&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-lg" tabindex="0">Lifestyle TV</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/inft&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-dstro" tabindex="0">Infotainment TV</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Edu&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-xomi" tabindex="0">Education TV</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/smsngin&cookie=https://raw.githubusercontent.com/24sports-net/cookie-updater/refs/heads/main/cookie.json" class="pill" id="btn-smsngin" tabindex="0">Samsung LiveTV</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/dvt&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-tcl" tabindex="0">Devotional TV</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/yupt&cookie=https://raw.githubusercontent.com/24sports-net/cookie-updater/refs/heads/main/cookie.json" class="pill" id="btn-yupt" tabindex="0">Yupp LiveTV</a>
+            <a href="?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/rnntv&cookie=https://raw.githubusercontent.com/24sports-net/cookie-updater/refs/heads/main/cookie.json" class="pill" id="btn-rnntv" tabindex="0">Runn LiveTV</a>
+            <a href="?m=jio.php&cod=https://allinonereborn-jiotv.pages.dev/jstr.json&cookie=https://raw.githubusercontent.com/24sports-net/cookie-updater/refs/heads/main/cookie.json?maint" class="pill" id="btn-jstr.php" tabindex="0">JioTV Plus TV</a>
+        </div>
+        <div class="nav-utils">
+            <div class="header__search-wrapper">
+                <input type="text" class="header__search-input" placeholder="Search..." id="searchInput" tabindex="0">
+                <div class="header__search-icon">
+                    <i data-lucide="search" style="width: 18px;"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        lucide.createIcons();
+
+        const pills = document.querySelectorAll('.pill');
+        const searchInput = document.getElementById('searchInput');
+
+        function setActivePill() {
+            const currentUrl = window.location.href.toLowerCase();
+            const savedPillId = localStorage.getItem('lastActivePill');
+            let matched = false;
+
+            pills.forEach(p => p.classList.remove('active'));
+
+            for (let pill of pills) {
+                const hrefPart = pill.getAttribute('href').toLowerCase();
+                if (currentUrl.includes(hrefPart)) {
+                    pill.classList.add('active');
+                    pill.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+                    localStorage.setItem('lastActivePill', pill.id);
+                    matched = true;
+                    break;
+                }
+            }
+
+            if (!matched && savedPillId) {
+                const savedPill = document.getElementById(savedPillId);
+                if (savedPill) {
+                    savedPill.classList.add('active');
+                    matched = true;
+                }
+            }
+        }
+
+        pills.forEach(pill => {
+            pill.addEventListener('click', function() {
+                localStorage.setItem('lastActivePill', this.id);
+            });
+            pill.addEventListener('focus', function() {
+                this.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+            });
+        });
+
+        // Remote Key Handling
+        document.addEventListener('keydown', (e) => {
+            const active = document.activeElement;
+
+            // 1. Arrow Right
+            if (e.key === 'ArrowRight') {
+                if (active.nextElementSibling && active.classList.contains('pill')) {
+                    active.nextElementSibling.focus();
+                } else if (active.classList.contains('pill')) {
+                    searchInput.focus();
+                }
+            }
+            
+            // 2. Arrow Left
+            if (e.key === 'ArrowLeft') {
+                if (active === searchInput) {
+                    pills[pills.length - 1].focus();
+                } else if (active.previousElementSibling && active.classList.contains('pill')) {
+                    active.previousElementSibling.focus();
+                }
+            }
+
+            // 4. Enter Key
+            if (e.key === 'Enter' && active.classList.contains('pill')) {
+                active.click();
+            }
+        });
+
+        // Fast Load Execution
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setActivePill);
+        } else {
+            setActivePill();
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JioTV+</title>
+    <link rel="icon" href="https://via.placeholder.com/32" type="image/png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script async src="https://ss.mrmnd.com/banner.js"></script>
+    <script async src="https://ss.mrmnd.com/native.js"></script>
+    <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+    
+<style>  
+     /* -------------------------------------------------------------------------- */
+        /* --- JW PLAYER TRANSPARENT BLACK & PURE WHITE THEME --- */
+        /* -------------------------------------------------------------------------- */
+        
+        /* 1. Control Bar Background */
+        .jwplayer.jw-skin-jw-gradient .jw-controlbar {
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%) !important;
+            opacity: 1; 
+        }
+
+        /* 2. Playback Progress Color */
+        .jwplayer.jw-skin-jw-gradient .jw-slider-horizontal .jw-progress {
+            background: #ffffff !important; 
+            height: 100% !important; 
+        }
+        
+        /* 3. Play/Pause BUTTON (Display Icon - बीच वाला बड़ा बटन) को स्टाइल करें */
+        .jwplayer.jw-skin-jw-gradient .jw-display-icon-container {
+            /* Translucent Black Circle Gradient */
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.9) 100%) !important;
+            border: 0px solid rgba(255, 255, 255, 0) !important; /* हल्का सफ़ेद किनारा */
+            border-radius: 50% !important;
+            padding: 15px !important; 
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0); 
+        }
+
+        /* Play Icon Color को शुद्ध सफ़ेद करें */
+        .jwplayer.jw-skin-jw-gradient .jw-icon-display:before {
+            color: #ffffff !important; 
+            text-shadow: none !important; 
+        }
+
+        /* 4. Small Icons/Buttons Color */
+        .jwplayer.jw-skin-jw-gradient .jw-button-container .jw-icon,
+        .jwplayer.jw-skin-jw-gradient .jw-text-elapsed,
+        .jwplayer.jw-skin-jw-gradient .jw-text-duration {
+            color: #ffffff !important; 
+        }
+
+        /* 5. Rail (Progress Bar/Volume Bar का बेस) का रंग */
+        .jwplayer.jw-skin-jw-gradient .jw-rail,
+        .jwplayer.jw-skin-jw-gradient .jw-volume-rail {
+            background-color: rgba(255, 255, 255, 0.3) !important; 
+        }
+
+        /* 6. Volume Bar Progress Color */
+        .jwplayer.jw-skin-jw-gradient .jw-slider-horizontal .jw-progress-volume {
+            background-color: #ffffff !important; 
+        }
+        
+        /* -------------------------------------------------------------------------- */
+        /* --- 7. PAUSE & BUFFERING BLACK LAYOUT (आइकॉन अब JW Player का डिफ़ॉल्ट है) --- */
+        /* -------------------------------------------------------------------------- */
+
+        /* A. पॉज़ और बफ़रिंग के दौरान डिस्प्ले एरिया को पूरी तरह काला (Black) करें */
+        .jw-state-paused .jw-display,
+        .jw-state-buffering .jw-display {
+            background-color: black !important; /* पूरी तरह काला बैकग्राउंड */
+        }
+        
+        /* महत्वपूर्ण: हमने कस्टम बटन के CSS को हटा दिया है, 
+           इसलिए डिफ़ॉल्ट डिस्प्ले आइकॉन (3 में स्टाइल किया गया) 
+           पॉज़ होने पर काले बैकग्राउंड के ऊपर दिखाई देगा और काम करेगा। */
+           
+        /* E. किसी भी डिमिंग/ग्रे ओवरले को पूरी तरह से हटाना */
+        .jw-display-background,
+        .jw-display:before,
+        .jw-display:after {
+            background: none !important; 
+            opacity: 0 !important;
+        }
+
+        /* F. सुनिश्चित करें कि पॉज़ होने पर वीडियो धुंधला न दिखे */
+        .jw-state-paused video {
+            filter: none !important;
+        }
+        /* Base and Utility Styles */
+        :root {
+            --color-primary: #f00; /* Red for emphasis (Live dot, loading) */
+            --color-background-dark: #000;
+            --color-background-medium: #111;
+            --color-background-light: #222;
+            --color-text: #fff;
+            --color-border: #444;
+            --spacing-xs: 6px;
+            --spacing-sm: 8px;
+            --spacing-md: 12px;
+            --spacing-lg: 16px;
+        }
+
+        /* --- Global & Utility --- */
+        
+        .icon-button {
+            background: transparent;
+            border: none;
+            color: var(--color-text);
+            font-size: 1.2em;
+            padding: var(--spacing-sm);
+            cursor: pointer;
+            border-radius: var(--spacing-xs);
+            transition: background-color 0.2s;
+        }
+        
+        .icon-button:hover {
+            background-color: var(--color-background-light);
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--color-background-dark);
+            color: var(--color-text);
+            transition: background 0.3s;
+            margin-bottom: 10px;
+        }
+
+        /* Ad Components */
+        .ad-card {
+            max-width: 330px;
+            height: 230px;
+            margin: var(--spacing-md) auto;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Channel Grid */
+        .channel-grid {
+            display: grid;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            margin-top: 95px;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Adaptive grid */
+            transition: opacity 0.3s;
+        }
+
+        .channel-card {
+            background: var(--color-background-medium);
+            border-radius: var(--spacing-sm);
+            text-align: center;
+            padding: var(--spacing-xs);
+            cursor: pointer;
+            color: var(--color-text);
+            font-size: 13px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 128px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .channel-card__logo-box {
+            background: #fff;
+            border-radius: var(--spacing-sm);
+            padding: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-xs);
+            height: 90px;
+        }
+
+        .channel-card__logo-box img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .channel-card__title {
+            font-size: 13px;
+            margin: 0;
+            color: var(--color-text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Player Overlay and Related Content */
+       #playerContainer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%; /* vw ke bajaye % use karein mobile compatibility ke liye */
+            height: 100%;
+            background: var(--color-background-dark);
+            z-index: 9999;
+            overflow-y: auto; 
+        }
+        
+         #related-content {
+            position: relative;
+            z-index: 1;
+            padding: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+        #related-content h2 {
+            color: var(--color-text);
+            font-size: 16px;
+            margin: 0 0 var(--spacing-sm) 4px;
+        }
+
+        .related__list {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: var(--spacing-xs);
+        }
+
+        .related__list::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for aesthetics */
+        }
+        
+        .related-card {
+            flex: 0 0 100px; /* Adjusted width for related list */
+            background: var(--color-background-medium);
+            border-radius: var(--spacing-sm);
+            text-align: center;
+            padding: var(--spacing-xs)
+            cursor: pointer;
+            color: var(--color-text);
+            font-size: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100px;
+            width:  140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .related-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+
+        .related-card .channel-card__logo-box {
+            height: 60px;
+            width: 130px;
+        }
+
+
+        /* Live Channel Info */
+        .live-info-card {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-md);
+            margin: 0 0 var(--spacing-md) 0;
+            gap: 10px;
+            width: fit-content;
+        }
+
+        .live-info-card__logo-box {
+            width: 49px;
+            height: 40px;
+            background: #fff;
+            border-radius: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .live-info-card__logo-box img {
+            width: 45px;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .live-info-card__text {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-weight: bold;
+            font-size: 15px;
+            color: var(--color-text);
+        }
+      
+        .live-info-card__dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #5f0cff, #ff006e);
+            box-shadow: 0 0 6px var(--color-primary);
+        }
+
+       /* --- Loader: Ab ye sirf JW Player ke frame mein dikhega --- */
+        #loadingOverlay {
+            position: absolute; /* Fixed ke bajaye absolute */
+            top: 0;
+            left: 0;
+            width: 100%;
+       /* Mobile fix: Agar video ki height 100% nahi hai, toh ye sirf video area cover karega */
+            height: 56.25vw; /* 16:9 Aspect Ratio for mobile default */
+            max-height: 100vh; 
+            background: rgba(0, 0, 0, 1);
+            display: none; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999; /* JW Player ke controls se upar rakhne ke liye */
+            backdrop-filter: blur(8px);
+        }
+
+       /* Desktop ke liye height adjustment */
+        @media (min-width: 768px) {
+        #loadingOverlay {
+            height: 100%; /* Desktop par player bada hota hai toh full cover sahi hai */
+        }
+     }
+
+       /* Spinner Style (Wahi rahega) */
+        .loader {
+           position: relative;
+           width: 50px; /* Thoda chota kiya hai player ke hisab se */
+           height: 50px;
+           border-radius: 50%;
+           background: linear-gradient(90deg, #5f0cff, #ff006e);
+           animation: spin 1s linear infinite;
+        } 
+
+        .loader::before {
+           content: '';
+           position: absolute;
+           inset: 6px;
+           background: #000;
+           border-radius: 50%;
+        }
+
+        @keyframes spin {
+           to { transform: rotate(360deg); 
+          }
+        }
+      /* --- TV REMOTE FIXES (Do not change original code) --- */
+
+        /* Sabse pehle default yellow outline ko block karne ke liye */
+        *:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Jab remote se card par focus ho (Yellow ki jagah white highlight) */
+        .channel-card:focus, .related-card:focus {
+            outline: none !important;
+            border: 2px solid #ffffff !important; /* White border for visibility */
+            transform: scale(1.05) !important; /* Thoda zoom effect */
+            background: var(--color-background-light) !important;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
+        }
+
+        /* Search input se yellow hatane ke liye */
+        .header__search-input:focus {
+            outline: none !important;
+            border: 1px solid #ffffff !important;
+        }
+
+        /* Ensure JW Player buttons don't show yellow box */
+        .jwplayer:focus, .jw-display-icon-container:focus {
+            outline: none !important;
+        }
+  
+
+/* Container Logic */
+#player-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+#player {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+}
+
+/* Card Style: Static below video */
+.live-info-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 5px 5px 5px;
+    box-sizing: border-box;
+    background: #000;
+    color: #fff;
+}
+
+/* Icons & Layout */
+.live-info-left-group { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+}
+
+.live-info-card__logo-box { 
+    width: 45px; 
+    height: 35px; 
+    background: #fff; 
+    padding: 3px;
+    border-radius: 6px; 
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.live-info-card__logo-box img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+}
+
+/* Live Indicator */
+.live-info-card__dot { 
+    width: 8px; 
+    height: 8px; 
+    background: #ff006e; 
+    border-radius: 50%; 
+    margin-right: 0px; 
+    box-shadow: 0 0 10px #ff006e; 
+    animation: blink 1.5s infinite; 
+}
+
+@keyframes blink { 
+    0%, 100% { opacity: 1; } 
+    50% { opacity: 0.5; } 
+}
+
+/* Action Button */
+.fav-btn-toggle { 
+    background: rgba(255,255,255,0.1); 
+    border: none; 
+    color: #fff; 
+    padding: 10px; /* Slightly larger for easier tapping */
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+  
+ 
+  
+</style>
+</head>
+<body>
+  
+<div id="favoritesSection" class="fav-section">
+<div class="channel-grid" id="favoritesGrid"></div>
+</div>  
+  
+    <main class="channel-grid" id="channelContainer"></main>
+
+    <section id="playerContainer">
+        <div id="player"></div>
+        
+        <div id="related-content">
+            <div class="live-info-card">
+    <div class="live-info-left-group">
+        <div class="live-info-card__logo-box">
+            <img id="liveLogo" src="" alt="Channel Logo">
+        </div>
+        <div class="live-info-card__text">
+            <span class="live-info-card__dot"></span>
+            <span style="color: #fff; font-weight: bold; margin-right: 1px;"></span>
+            <span id="liveTitle">CHANNEL NAME</span>
+        </div>
+    </div>
+
+    <button id="mainFavBtn" class="fav-btn-toggle">
+        <span class="material-icons-round" id="favIcon">favorite_border</span>
+    </button>
+</div>
+
+            <h2>Sponsored</h2>
+            <div class="ad-card related-ad-card" style="height: 230px;">
+                <div data-mndbanid="9d0bba76-40cc-41f5-a1dc-d1d66926e14e"></div>
+            </div>
+
+            <h2>Related Channels</h2>
+            <div class="related__list" id="relatedList"></div>
+        </div>
+        
+        <div id="loadingOverlay"><div class="loader"></div></div>
+    </section>
+
+  
+<script>
+    // --- Configuration ---
+    const DEFAULT_IMAGE = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3uAQMe3XrsK4kTn1Wz_4WhTTKUo3tKyh4C-ib6SP7LXTfWsHrpQB3SsYivkb4cwf6vUXaAke4XEXtG_cXimdPZwkxyZquoRNnUEjgc5_AnzJSLvfXTgOmnAi4JJo-I1k8c0dRxgrdRzOm78bllL2ppG-VBgUWt5jBZWo7W0wBL989FU5m-H3IUHIL5CY/s1600/LiveTVLD.png";
+    const PLAYER_KEY = "XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";
+    const DEFAULT_PLAYLIST_URL = "https://raw.githubusercontent.com/alex8875/m3u/refs/heads/main/jtv.m3u"; 
+    const WATERMARK_URL = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEihFKlu4Q43prqSQDjg9cJ46Kl7kEyUhOqBE6y-T7FB8afhgTk20fjHBM4FmS7JuUZT5irYq35jl9lKGHpoG7NjPL8rd4lOieKUYFA5ytp3b1GRX-m5ahrdyZR3A4DsaP5ZDu0TyNg1CZRdQQFrWKYMkBGjClIF6kvCXCz6egKkp_Qh9-UvaCr3LzOcqr4O/s1600/IPTVPLAYWatermark.png";
+
+    // --- DOM Elements ---
+    const $container = document.getElementById("channelContainer");
+    const $playerContainer = document.getElementById("playerContainer");
+    const $loader = document.getElementById("loadingOverlay");
+    const $relatedList = document.getElementById("relatedList");
+    const $liveTitle = document.getElementById("liveTitle");
+    const $liveLogo = document.getElementById("liveLogo");
+    const $favSection = document.getElementById("favoritesSection");
+    const $favGrid = document.getElementById("favoritesGrid");
+    const $mainFavBtn = document.getElementById("mainFavBtn");
+    const $searchInput = document.getElementById("searchInput");
+
+    // --- State ---
+    let allChannels = [];
+    let jwplayerInstance = null;
+    let currentPlayingChannel = null;
+
+    // --- Helpers ---
+    const saveToken = (t) => localStorage.setItem('saved_iptv_token', t);
+    const getToken = () => localStorage.getItem('saved_iptv_token');
+
+    const getFavs = () => {
+        let favs = JSON.parse(localStorage.getItem('my_iptv_favs')) || [];
+        const currentGlobalToken = getToken();
+        
+        return favs.map(ch => {
+            if (currentGlobalToken) {
+                ch.tokenValue = currentGlobalToken;
+                if (ch.url && ch.url.includes("__hdnea__=")) {
+                    ch.url = ch.url.replace(/__hdnea__=[^&?#]*/, `__hdnea__=${currentGlobalToken}`);
+                }
+            }
+            return ch;
+        });
+    };
+
+    function updateFavUI() {
+        const favs = getFavs();
+        if ($favSection && $favGrid) {
+            if (favs.length > 0) {
+                $favSection.style.display = 'block';
+                $favGrid.innerHTML = '';
+                favs.forEach(ch => $favGrid.appendChild(createBaseCard(ch, false)));
+            } else {
+                $favSection.style.display = 'none';
+            }
+        }
+        if (currentPlayingChannel && $mainFavBtn) {
+            const isFav = favs.some(f => f.name === currentPlayingChannel.name);
+            $mainFavBtn.classList.toggle('active', isFav);
+            const icon = document.getElementById('favIcon');
+            if(icon) icon.textContent = isFav ? 'favorite' : 'favorite_border';
+        }
+    }
+
+    function createBaseCard(ch, isRelated) {
+        const div = document.createElement("div");
+        div.className = "channel-card";
+        if (isRelated) {
+            Object.assign(div.style, { width: "130px", height: "102px", flex: "0 0 auto" });
+        }
+        div.innerHTML = `
+            <div class="channel-card__logo-box" style="${isRelated ? 'height: 60px;' : 'height: 80px;'}">
+                <img src="${ch.logo}" onerror="this.src='${DEFAULT_IMAGE}'" loading="lazy">
+            </div>
+            <h3 class="channel-card__title" style="font-size: ${isRelated ? '13px' : '13px'};">${ch.name}</h3>
+        `;
+        div.onclick = () => playChannel(ch);
+        return div;
+    }
+
+    // --- Player Logic ---
+    function playChannel(channel, pushState = true) {
+        currentPlayingChannel = channel;
+        if (jwplayerInstance) { jwplayerInstance.remove(); jwplayerInstance = null; }
+        
+        const activeToken = channel.tokenValue || getToken() || "";
+        const drmInfo = (channel.keyId && channel.key) ? `&drmScheme=clearkey&drmLicense=${channel.keyId}:${channel.key}` : "";
+        
+        const extraParams = `|Cookie=__hdnea__=${activeToken}&Origin=https://jiotv.com/&Referer=https://jiotv.com/&User-Agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0${drmInfo}`;
+        const finalUrlToShow = channel.url + extraParams;
+
+        if (pushState) {
+            window.history.pushState({ playerOpen: true }, "", `?play=${finalUrlToShow}`);
+        } else {
+            window.history.replaceState({ playerOpen: true }, "", `?play=${finalUrlToShow}`);
+        }
+
+        $container.style.display = "none";
+        if($favSection) $favSection.style.display = "none";
+        $playerContainer.style.display = "block";
+        $loader.style.display = "flex";
+        
+        $liveTitle.textContent = channel.name; 
+        $liveLogo.src = channel.logo;
+        updateFavUI();
+
+        if (activeToken) patchXHR(activeToken);
+
+        jwplayerInstance = jwplayer("player").setup({
+            playlist: [{
+                file: channel.url, image: channel.logo,
+                type: (channel.url.includes(".mpd")) ? "dash" : "hls",
+                drm: (channel.keyId && channel.key) ? { clearkey: { keyId: channel.keyId, key: channel.key } } : undefined
+            }],
+            autostart: true, width: "100%", aspectratio: "16:9", stretching: "exactfit",
+            logo: { file: WATERMARK_URL, position: "bottom-right" },
+            skin: { name: "jw-gradient" }
+        });
+
+        jwplayerInstance.on("firstFrame", () => { $loader.style.display = "none"; });
+        renderRelatedChannels(channel);
+        window.scrollTo(0, 0);  
+    }
+
+    function closePlayerUI() {
+        if (jwplayerInstance) { jwplayerInstance.remove(); jwplayerInstance = null; }
+        $playerContainer.style.display = "none";
+        $container.style.display = "grid"; 
+        currentPlayingChannel = null;
+        updateFavUI();
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    window.onpopstate = () => { if ($playerContainer.style.display === "block") closePlayerUI(); };
+
+    function patchXHR(token) {
+        const origOpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function(method, url) {
+            if (url && typeof url === 'string' && !url.includes("__hdnea__")) {
+                url += (url.includes("?") ? "&" : "?") + "__hdnea__=" + token;
+            }
+            return origOpen.apply(this, arguments);
+        };
+    }
+
+    async function loadPlaylist() {
+        const params = new URLSearchParams(window.location.search);
+        const m3uMain = params.get("cod") || localStorage.getItem("cod_url") || DEFAULT_PLAYLIST_URL;
+        const srcLink = params.get("cookie") || params.get("src");
+
+        try {
+            // Updated Cookie logic to handle JSON with 'cookieHeader'
+            if (srcLink) {
+                const resSrc = await fetch(srcLink);
+                const rawText = await resSrc.text();
+                let newToken = "";
+                
+                try {
+                    const jsonData = JSON.parse(rawText);
+                    if (jsonData.cookieHeader) {
+                        newToken = jsonData.cookieHeader.replace('__hdnea__=', '');
+                    }
+                } catch(e) {
+                    // Fallback to Regex for plain text
+                    newToken = (/__hdnea__=st=[^"'\s\r\n]*/.exec(rawText) || [""])[0].replace('__hdnea__=', '');
+                }
+
+                if (newToken) saveToken(newToken);
+            }
+
+            const resMain = await fetch(m3uMain);
+            const rawData = await resMain.text();
+            let finalChannels = [];
+
+            if (rawData.trim().startsWith('{') || rawData.trim().startsWith('[')) {
+                const jsonData = JSON.parse(rawData);
+                const list = jsonData.channels || (Array.isArray(jsonData) ? jsonData : []);
+                finalChannels = list.map(item => {
+                    let extractedKeyId = null, extractedKey = null;
+                    if (item.drm && typeof item.drm === 'object') {
+                        const keys = Object.keys(item.drm);
+                        if (keys.length > 0) {
+                            extractedKeyId = keys[0];
+                            extractedKey = item.drm[extractedKeyId];
+                        }
+                    }
+                    return {
+                        name: item.name || item.title || "Unknown",
+                        logo: item.logo || item.image || item.tvg_logo || "",
+                        url: item.mpd || item.url || item.link || "",
+                        keyId: item.keyId || item.key_id || extractedKeyId,
+                        key: item.key || item.license_key || extractedKey,
+                        tokenValue: (item.token || item.url || "").match(/__hdnea__=([^&?]+)/)?.[1] || getToken()
+                    };
+                });
+            } else {
+                let m3uText = rawData;
+                const savedToken = getToken();
+                if (savedToken) m3uText = m3uText.replace(/(__hdnea__=)([^ \n\r\t"']*)/g, `__hdnea__=${savedToken}`);
+                finalChannels = parseM3U(m3uText);
+            }
+            return finalChannels;
+        } catch (e) { return []; }
+    }
+
+    function parseM3U(text) {
+        const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+        const channels = []; let cur = {};
+        for (const line of lines) {
+            if (line.startsWith("#EXTINF")) {
+                cur.name = line.split(",").pop().trim();
+                cur.logo = (line.match(/tvg-logo="(.*?)"/) || [])[1] || "";
+            } else if (line.includes("license_key")) {
+                const parts = line.split("=").pop().trim().split(":");
+                if (parts.length === 2) [cur.keyId, cur.key] = parts;
+            } else if (/^https?:\/\//i.test(line)) {
+                cur.url = line;
+                cur.tokenValue = line.match(/__hdnea__=([^&?]+)/)?.[1] || getToken();
+                channels.push({ ...cur }); cur = {};
+            }
+        }
+        return channels;
+    }
+
+    function renderChannelCards(channels) {
+        $container.innerHTML = "";
+        channels.forEach(ch => $container.appendChild(createBaseCard(ch, false)));
+    }
+
+    function renderRelatedChannels(current) {
+        $relatedList.innerHTML = "";
+        allChannels.filter(ch => ch.name !== current.name).sort(() => 0.5 - Math.random()).slice(0, 15).forEach(ch => $relatedList.appendChild(createBaseCard(ch, true)));
+    }
+
+    async function initializeApplication() {
+        jwplayer.key = PLAYER_KEY;
+        $loader.style.display = "flex";
+        allChannels = await loadPlaylist();
+        renderChannelCards(allChannels);
+        updateFavUI();
+        
+        const params = new URLSearchParams(window.location.search);
+        let playUrl = params.get("play"); 
+        if (playUrl) {
+            const cleanUrl = playUrl.split('|')[0];
+            const target = allChannels.find(c => c.url === cleanUrl);
+            if (target) playChannel(target, false);
+        }
+        $loader.style.display = "none";
+    }
+
+    if ($mainFavBtn) $mainFavBtn.onclick = () => {
+        if (!currentPlayingChannel) return;
+        let favs = JSON.parse(localStorage.getItem('my_iptv_favs')) || [];
+        const idx = favs.findIndex(f => f.name === currentPlayingChannel.name);
+        if (idx > -1) {
+            favs.splice(idx, 1);
+        } else {
+            favs.push(currentPlayingChannel);
+        }
+        localStorage.setItem('my_iptv_favs', JSON.stringify(favs));
+        updateFavUI();
+    };
+
+    if($searchInput) $searchInput.oninput = (e) => {
+        renderChannelCards(allChannels.filter(c => c.name.toLowerCase().includes(e.target.value.toLowerCase())));
+    };
+
+    document.addEventListener("DOMContentLoaded", initializeApplication);  
+</script>
+</body>
+</html>
