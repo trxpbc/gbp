@@ -126,7 +126,7 @@
         </div>
 
         <div class="nav-pills" id="pillContainer">
-            <a href="https://com-jio-media-jiotvplus-ct.blogspot.com/?m=jio.php&status=TEST" class="pill">IPTV PLAYER</a>
+            <a href="https://com-jio-media-jiotvplus-ct.blogspot.com/?m=jio.php&status=TEST" class="pill">HD IPTV PLAYER</a>
             <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/mus&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-mus" tabindex="0">Music Channel</a>
             <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/mov&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-mov" tabindex="0">Movies Channel</a>
             <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Nws&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-nws" tabindex="0">News Channel</a>
