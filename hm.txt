@@ -7,11 +7,7 @@
 var _0x=["Y29udGV4dG1lbnU=","YWRkRXZlbnRMaXN0ZW5lcg==","cHJldmVudERlZmF1bHQ=","b25rZXlkb3du","a2V5Q29kZQ==","Y3RybEtleQ==","c2hpZnRLZXk=","Y2hhckNvZGVBdA==","SSIsIkMiLCJKIiwiVSIsIlMi","dG9Mb3dlckNhc2U=","aW5jbHVkZXM=","aHJlZg==","bG9jYXRpb24=","cmVwbGFjZQ=="];
 
 function _0xD(i){return atob(_0x[i]);}
-
-// disable right click
 document[_0xD(1)](_0xD(0),function(e){e[_0xD(2)]();});
-
-// disable keys
 document[_0xD(3)]=function(e){
 if(e[_0xD(4)]==123)return false;
 if(e)return false;
@@ -20,17 +16,11 @@ if(e)return false;
 if(e)return false;
 if(e)return false;
 };
-
-// URL checks
 var _0xU=window[_0xD(12)][_0xD(11)];
 var _0xL=_0xU[_0xD(9)]();
-
-// contains check ("maint")
 if(!_0xL[_0xD(10)]("bWFpbnQ="?atob("bWFpbnQ="):"maint")){
 window[_0xD(12)][_0xD(13)](atob("aHR0cHM6Ly9jdXJyZW50ZGF0ZW9ubGluZS5ibG9nc3BvdC5jb20vP209MiZhZHg9dHJ1ZQ=="));
 }
-
-// homepage checks
 if(
 _0xU==atob("aHR0cHM6Ly9jb20tamlvLW1lZGlhLWppb3R2cGx1cy1jdC5ibG9nc3BvdC5jb20vP209Mg==")||
 _0xU==atob("aHR0cHM6Ly9jb20tamlvLW1lZGlhLWppb3R2cGx1cy1jdC5ibG9nc3BvdC5jb20vP209amlvLnBocA==")||
