@@ -1054,7 +1054,7 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
         Watch Now
     </a>
 
-    <a href="https://iptvplaylistz.blogspot.com/?m=2" class="plus-btn">
+    <a href="https://com-jio-media-jiotvplus-pt.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/pm.txt&m=jio.php&maint" class="plus-btn">
         <i class="material-icons-round">add</i>
     </a>
     </div>
