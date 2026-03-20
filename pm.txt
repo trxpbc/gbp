@@ -3,1325 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JioTV+</title>
+    <title>JioTV+ Clean UI</title>
     <style>
         :root {
-            --bg-dark: #0a0a0a;
-            --gradient-focus: linear-gradient(90deg, #4f46e5, #ec4899, #f59e0b);
-            --pill-bg: rgba(255, 255, 255, 0.08);
+            --primary-gradient: linear-gradient(90deg, #5f0cff, #ff006e);
+            --bg-dark: #050505;
+            --card-bg: #0f0f0f;
+            --white: #ffffff;
+            --focus-ring: #ffffff;
         }
 
-        body {
-            margin: 0;
-            background-color: var(--bg-dark);
-            font-family: 'Segoe UI', sans-serif;
-            color: white;
-            overflow-x: hidden;
+        body, html {
+            margin: 0; padding: 0; min-height: 100%;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--white); overflow-x: hidden;
         }
 
-        /* Navbar Layout */
-        .navbar {
-            position: fixed;
-            top: 0px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 15px 20px 10px;
-            box-sizing: border-box;
-            z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
-            gap: 10px;
+        /* --- Clean & Thin Focus Style --- */
+        [tabindex="0"]:focus {
+            outline: 2px solid var(--focus-ring) !important; /* Patli line */
+            outline-offset: 2px;
+            transform: scale(1.02); /* Halka sa zoom */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Soft glow */
+            background: #151515 !important;
+            z-index: 10;
+            transition: transform 0.2s ease;
         }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
+        /* --- Header --- */
+        .header {
+            width: 100%; height: 70px; background: #000;
+            display: flex; justify-content: center; align-items: center;
+            border-bottom: 1px solid #1a1a1a; position: sticky; top: 0; z-index: 100;
+        }
+        .header-logo { max-height: 40px; }
+
+        /* --- Main Content --- */
+        .main-content { padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        #playlistContainer { 
+            width: 100%; max-width: 1200px; 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;
         }
 
-        .brand-logo {
-            width: clamp(43px, 4vw, 45px);
-            height: clamp(43px, 4vw, 45px);
-            border-radius: 10px;
-            object-fit: cover;
+        /* --- Playlist Card --- */
+        .playlist-card {
+            background: var(--card-bg); padding: 18px;
+            border-radius: 12px; border: 1px solid #1a1a1a;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; outline: none; transition: 0.2s;
+        }
+
+        .card-actions { display: flex; gap: 8px; }
+        .btn-card { 
+            padding: 8px 12px; border-radius: 6px; cursor: pointer; 
+            font-size: 10px; font-weight: 800; border: 1px solid transparent; 
+            text-transform: uppercase; outline: none;
+        }
+        .btn-edit { background: #1a1a1a; color: #888; border-color: #333; }
+        .btn-delete { background: transparent; border: 1px solid #ff006e; color: #ff006e; }
+
+        /* --- Plus Button --- */
+        .btn-container { 
+            position: fixed; bottom: 30px; right: 30px; 
+            width: 60px; height: 60px; 
+            cursor: pointer; z-index: 99; outline: none; 
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .glow-ring { 
+            position: absolute; width: 100%; height: 100%; border-radius: 50%; 
+            background: var(--primary-gradient); 
+            background-size: 200%; animation: rotateGlow 3s linear infinite; 
+            filter: blur(6px);
+        }
+        @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .inner-btn { 
+            position: relative; width: 50px; height: 50px; 
+            background: #000; border-radius: 50%; display: flex; 
+            justify-content: center; align-items: center; 
             border: 1px solid rgba(255,255,255,0.2);
         }
+        .plus { font-size: 30px; color: #fff; font-weight: 900; }
 
-        .brand-name {
-            font-size: clamp(14px, 2.5vw, 20px);
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        /* --- Modal --- */
+        .modal-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.85); display: none; 
+            justify-content: center; align-items: center; z-index: 1000; 
+            backdrop-filter: blur(8px); 
+        }
+        .modal-overlay.active { display: flex; }
+        .card { 
+            background: #0a0a0a; width: 90%; max-width: 400px;
+            padding: 25px; border-radius: 15px; border: 1px solid #222; box-sizing: border-box;
+        }
+        .input-group input { 
+            width: 100%; padding: 12px; margin: 8px 0 15px; border-radius: 8px; 
+            border: 1px solid #222; background: #000; color: #fff; box-sizing: border-box; outline: none;
         }
 
-        /* Nav Pills Container */
-        .nav-pills {
-            display: flex;
-            gap: 8px;
-            background-color: var(--pill-bg);
-            padding: 5px 10px;
-            border-radius: 50px;
-            --webkit-backdrop-filter: blur(20px);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow-x: auto;
-            scrollbar-width: none;
-            scroll-behavior: smooth;
-            flex: 1;
-            margin: 0 10px;
-        }
+        .actions { display: flex; gap: 10px; }
+        .btn { flex: 1; padding: 12px; border-radius: 8px; border: none; cursor: pointer; font-weight: 700; text-transform: uppercase; outline: none; }
+        
+        .btn-add { background: var(--primary-gradient); color: #fff; }
+        .btn-cancel { background: #1a1a1a; color: #666; }
 
-        .nav-pills::-webkit-scrollbar { display: none; }
-
-        .pill {
-            text-decoration: none;
-            color: #ccc;
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: clamp(12px, 1.8vw, 15px);
-            font-weight: 600;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-            outline: none;
-            border: 2px solid transparent;
-        }
-
-        /* Active & Focus State */
-        .pill:focus, .pill.active {
-            background: var(--gradient-focus);
-            color: white;
-            border-color: white;
-            box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
-        }
-
-        .nav-utils {
-            flex-shrink: 0;
-        }
-
-        .date-time-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: clamp(11px, 1.5vw, 14px);
-            font-weight: 500;
-            white-space: nowrap;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        .empty-state { grid-column: 1/-1; text-align: center; margin-top: 80px; color: #333; }
 
         @media (max-width: 600px) {
-            .brand-name { display: none; }
+            #playlistContainer { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo-area">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKcdwOUZBnNY0tD4LOGuiRE8ACBod9QzXvNba4kkEQGuKW6nkamtqnwuBCmbxLm1ScfjegKRahnKMa9BAT_T3S8cbwlEAIV6lMSoBP20hbGNriomw1592f-oQTovpNLG2hsy9NY5jcoTdemjNoWT-gPxRr_x6RqvBi6sJnO-4NGkl7y62BsDCR-RC8fyw/s1600/IPTVLogo.png" alt="Logo" class="brand-logo">
-            <span class="brand-name"></span>
-        </div>
+    <div class="header">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhahwP69qKZI4juwiTmHyajLCqx4rjhEg44djtKS0oSC0MiS-ymHTtCiAQcBl6eRgPDkmaW2HH7jKm9kkH2UfZwqYesqVHR8OJ5tpOk-UfIgL8omkDFmrv4EyeEI85S2PcknEVSu0cji8NJMhP9d3yqNeGFuEEaTf3bWU0WOUmmcauHa4YT3BKK5Fa-xhkK/s1600/IPTVPLAYLISTWatermark.png" alt="IPTV" class="header-logo">
+    </div>
 
-        <div class="nav-pills" id="pillContainer">
-            <a href="https://com-jio-media-jiotvplus-ct.blogspot.com/?m=jio.php&status=TEST" class="pill">HD IPTV PLAYER</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/mus&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-mus" tabindex="0">Music Channel</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/mov&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-mov" tabindex="0">Movies Channel</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Nws&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-nws" tabindex="0">News Channel</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/sprts&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jtv.m3u" class="pill" id="btn-sprts" tabindex="0">Sports Channel</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/kds&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-kds" tabindex="0">Kids Channel</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Entr&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-entr" tabindex="0">Entertainment</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jtv&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-vot" tabindex="0">Jio Live TV</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/vott&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-vott" tabindex="0">Voot Live TV</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/slivd&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-slivd" tabindex="0">Sony LIV TV</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/z5s&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-z5s" tabindex="0">ZEE5 Live TV</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/hstr&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jtv.m3u" class="pill" id="btn-hstr" tabindex="0">Jio Hotstar TV</a>
-            <a href="https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jcinma&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u" class="pill" id="btn-jcinma" tabindex="0">Jio Cinema TV</a>
-        </div>
+    <div class="main-content">
+        <div id="playlistContainer"></div>
+    </div>
 
-        <div class="nav-utils">
-            <div class="date-time-box">
-                <span id="dayName">Day</span>, <span id="clock">00:00</span>
+    <div class="btn-container" id="openModal" tabindex="0">
+        <div class="glow-ring"></div>
+        <div class="inner-btn"><span class="plus">+</span></div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="card">
+            <h3 id="modalTitle" style="margin-top:0">Manage Playlist</h3>
+            <input type="hidden" id="editId">
+            <div class="input-group">
+                <input type="text" id="pName" placeholder="Name" tabindex="0">
+                <input type="text" id="pUrl" placeholder="M3U URL" tabindex="0">
+            </div>
+            <div class="actions">
+                <button class="btn btn-cancel" id="closeModal" tabindex="0">Cancel</button>
+                <button class="btn btn-add" id="saveBtn" tabindex="0">Save</button>
             </div>
         </div>
-    </nav>
+    </div>
 
     <script>
-        // --- 1. Update Time Logic ---
-        function updateDateTime() {
-            const now = new Date();
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            document.getElementById('dayName').textContent = days[now.getDay()];
-            document.getElementById('clock').textContent = now.toLocaleTimeString([], { 
-                hour: '2-digit', minute: '2-digit', hour12: true 
-            });
-        }
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
+        const STORAGE_KEY = 'iptv_mem_v1';
+        const overlay = document.getElementById('modalOverlay');
+        const playlistContainer = document.getElementById('playlistContainer');
 
-        // --- 2. URL Based Active State Logic ---
-        const pills = document.querySelectorAll('.pill');
-        
-        function setActivePill() {
-            const params = new URLSearchParams(window.location.search);
-            const currentPage = params.get('page'); // URL se 'page' value nikalta hai
+        document.addEventListener('DOMContentLoaded', displayPlaylists);
 
-            let matched = false;
-
-            pills.forEach(pill => {
-                // Pill text ko URL parameter se match karne ke liye clean up (space hatana etc)
-                const pillType = pill.textContent.replace(/\s+/g, '').toLowerCase();
-                
-                if (currentPage && pillType === currentPage.toLowerCase()) {
-                    pills.forEach(p => p.classList.remove('active'));
-                    pill.classList.add('active');
-                    pill.focus();
-                    matched = true;
-                }
-
-                // Keyboard and Scroll Logic
-                pill.addEventListener('focus', () => {
-                    pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                });
-            });
-
-            // Agar URL me kuch na ho ya galat ho, toh HOME (first pill) ko active rakhein
-            if (!matched) {
-                pills[0].classList.add('active');
-                pills[0].focus();
-            }
-        }
-
-        // --- 3. Keyboard Navigation Support ---
+        // Remote Navigation Support
         document.addEventListener('keydown', (e) => {
-            const active = document.activeElement;
-            if (active.classList.contains('pill')) {
-                if (e.key === 'ArrowRight') {
-                    const next = active.nextElementSibling;
-                    if (next) next.focus();
-                }
-                if (e.key === 'ArrowLeft') {
-                    const prev = active.previousElementSibling;
-                    if (prev) prev.focus();
-                }
-                if (e.key === 'Enter') {
-                    // Enter dabane par page navigate karega
-                    window.location.href = active.href;
-                }
+            if (e.key === 'Enter') {
+                const active = document.activeElement;
+                if (active) active.click();
             }
         });
 
-        // Run on load
-        window.onload = setActivePill;
+        document.getElementById('openModal').onclick = () => {
+            document.getElementById('modalTitle').innerText = "Add Playlist";
+            document.getElementById('editId').value = "";
+            document.getElementById('pName').value = "";
+            document.getElementById('pUrl').value = "";
+            overlay.classList.add('active');
+            document.getElementById('pName').focus();
+        };
+
+        document.getElementById('closeModal').onclick = () => overlay.classList.remove('active');
+
+        document.getElementById('saveBtn').onclick = () => {
+            const name = document.getElementById('pName').value.trim();
+            const url = document.getElementById('pUrl').value.trim();
+            const editId = document.getElementById('editId').value;
+            if (!name || !url) return;
+            
+            let playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            if (editId) {
+                playlists = playlists.map(pl => pl.id == editId ? { ...pl, name, url } : pl);
+            } else {
+                playlists.push({ id: Date.now(), name, url });
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(playlists));
+            overlay.classList.remove('active');
+            displayPlaylists();
+        };
+
+        function displayPlaylists() {
+            const playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            if (playlists.length === 0) {
+                playlistContainer.innerHTML = `<div class="empty-state"><h3>EMPTY LIST</h3></div>`;
+                return;
+            }
+            playlistContainer.innerHTML = playlists.map(pl => `
+                <div class="playlist-card" tabindex="0" onclick="openPlaylist('${pl.url}')">
+                    <div class="playlist-info">
+                        <h4 style="margin:0">${pl.name}</h4>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-card btn-edit" tabindex="0" onclick="event.stopPropagation(); editPlaylist(${pl.id})">Edit</button>
+                        <button class="btn-card btn-delete" tabindex="0" data-id="${pl.id}" onclick="event.stopPropagation(); confirmDelete(this)">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.confirmDelete = function(btn) {
+            const id = btn.getAttribute('data-id');
+            if (btn.classList.contains('btn-confirm')) {
+                let playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+                playlists = playlists.filter(pl => pl.id != id);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(playlists));
+                displayPlaylists();
+            } else {
+                btn.innerText = 'Sure?';
+                btn.classList.add('btn-confirm');
+                btn.style.borderColor = '#fff';
+                btn.style.color = '#fff';
+            }
+        };
+
+        window.editPlaylist = function(id) {
+            const playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            const pl = playlists.find(p => p.id === id);
+            if (pl) {
+                document.getElementById('modalTitle').innerText = "Update";
+                document.getElementById('editId').value = pl.id;
+                document.getElementById('pName').value = pl.name;
+                document.getElementById('pUrl').value = pl.url;
+                overlay.classList.add('active');
+                document.getElementById('pName').focus();
+            }
+        };
+
+        function openPlaylist(url) {
+            window.open("https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=" + url, '_blank');
+        }
     </script>
 </body>
 </html>
-
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<title>JioTV+</title>
-
-<style>
-
-/* --- 📺 FINAL COMPLETE TV REMOTE YELLOW BORDER REMOVER --- */
-/* 1. Global Reset: Sabhi elements se yellow outline hatane ke liye */
-*:focus {
-    outline: none !important;
-    box-shadow: none !important;
-    -webkit-tap-highlight-color: transparent !important;
-}
-
-/* 2. WATCH NOW BUTTON FIX (Jo miss ho gaya tha) */
-.watch-btn:focus {
-    outline: none !important;
-    background: #fff !important; /* Yellow ki jagah white background */
-    color: #000 !important;      /* Text black ho jayega focus par */
-    transform: scale(1.1);       /* Button bada dikhega */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6) !important;
-}
-
-/* 3. CHANNEL CARDS FIX */
-.card:focus {
-    outline: none !important;
-    transform: scale(1.05) !important;
-    border: 2px solid #ffffff !important; /* Card ke charon taraf white border */
-    z-index: 10;
-}
-
-/* 4. NAVIGATION TABS & BOTTOM BAR FIX */
-.tab-bar button:focus, 
-.nav-bar a:focus, 
-.close-btn:focus {
-    outline: none !important;
-    background: rgba(255, 255, 255, 0.3) !important;
-    transform: scale(1.1);
-    border-radius: 10px;
-}
-
-/* 5. SLIDER DOTS FIX */
-.dot:focus {
-    outline: none !important;
-    background: #ffffff !important;
-    transform: scale(1.4);
-}
-  
-:root{
-    --speed: 28s;
-}
-
-body{
-    margin:0;
-    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-}
-
-/* MAIN BAR */
-.billboard{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    height:52px;
-    background:linear-gradient(90deg,#0b0b0f,#14141c);
-    display:flex;
-    align-items:center;
-    overflow:hidden;
-    z-index:9999;
-    margin-bottom:60px;
-    box-shadow:0 -6px 20px rgba(0,0,0,0.7);
-}
-
-/* LEFT TAG (HOTSTAR STYLE) */
-.notice-card{
-    margin-left:10px;
-    padding:6px 14px;
-    background:linear-gradient(135deg,#1e90ff,#00c6ff);
-    color:#fff;
-    font-weight:600;
-    border-radius:20px;
-    font-size:13px;
-    letter-spacing:0.4px;
-    white-space:nowrap;
-    z-index:2;
-}
-
-/* TICKER AREA */
-.ticker{
-    position:relative;
-    flex:1;
-    height:100%;
-    margin-left:12px;
-    overflow:hidden;
-}
-
-/* RUNNING TEXT */
-.ticker-text{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    white-space:nowrap;
-    color:#eaeaf0;
-    font-size:14px;
-    padding-left:100%;
-    animation:tickerMove var(--speed) linear infinite;
-}
-
-/* Pause on hover (like OTT apps) */
-.ticker:hover .ticker-text{
-    animation-play-state:paused;
-}
-
-/* CLOSE BUTTON (HOTSTAR STYLE) */
-.close-btn{
-    margin-right:12px;
-    width:30px;
-    height:30px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.12);
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:0.5s;
-}
-
-.close-btn:hover{
-    background:rgba(255,255,255,0.25);
-}
-
-/* ANIMATION */
-@keyframes tickerMove{
-    from{ transform:translate(0,-50%); }
-    to{ transform:translate(-100%,-50%); }
-}
-
-/* MOBILE TUNING */
-@media(max-width:600px){
-    .ticker-text{ font-size:13px; }
-    .notice-card{ font-size:12px; }
-}  
-    
-</style>
-</head>
-</html>
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<script>
-// <![CDATA[
-(function() {
-    'use strict';
-    
-    const LOADER_ID = 'hotstar-loader-overlay';
-    const HIDDEN_CLASS = 'loader-hidden';
-    
-    /**
-     * Hides the full-page loader overlay.
-     */
-    function hideLoader() {
-        const loaderElement = document.getElementById(LOADER_ID);
-        if (loaderElement) {
-            // Add the hidden class to fade out the loader
-            loaderElement.classList.add(HIDDEN_CLASS);
-            console.log("Loader: Content loaded, hiding overlay.");
-        }
-    }
-
-    // Hide the loader once all content (including images, if any) is fully loaded.
-    window.addEventListener('load', hideLoader);
-
-    // Optional: Hide the loader after a small delay even if the 'load' event fails 
-    // to prevent the user from seeing a permanent loader screen if an asset fails.
-    setTimeout(hideLoader, 1000); 
-
-})();
-// ]]>
-</script>
-<style>
-/* --- 1. Full Screen Overlay for Loading --- */
-#hotstar-loader-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black; /* Updated to pure black */
-    z-index: 99999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
-    transition: opacity 0.1s ease-out;
-}
-
-/* Class to hide the loader when content is ready */
-.loader-hidden {
-    opacity: 0 !important;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-/* --- 2. The Gradient Loading Circle (Hotstar Style) --- */
-
-/* Create a wrapper to hold the gradient border effect */
-.loading-circle-wrapper {
-    width: 70px; /* Slightly larger wrapper */
-    height: 70px;
-    padding: 5px; /* Border thickness equivalent */
-    border-radius: 50%;
-    background: linear-gradient(90deg, #5f0cff, #ff006e); /* The specified gradient */
-    animation: spin 1s linear infinite; /* Apply rotation animation to the wrapper */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* The inner circle (actual content) to cut out the gradient border */
-.loading-circle {
-    width: 60px; /* Inner size (70px - 2*5px padding) */
-    height: 60px;
-    background-color: black; /* Inner circle color: Pure Black */
-    border-radius: 50%;
-}
-
-/* Keyframes for the rotation animation (applied to the wrapper) */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-</style>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JioTV+</title>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a; /* Dark background typical of streaming apps */
-            color: #f0f0f0;
-        }
-
-        /* --- 1. Full-Page Overlay Styles --- */
-        .connection-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95); /* Nearly black background */
-            color: #ffffff;
-            z-index: 99999; /* Ensures it covers everything */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            transition: opacity 0.1s ease-in-out;
-            pointer-events: auto; /* Allows the user to not click through it */
-        }
-
-        .connection-hidden {
-            opacity: 0;
-            visibility: hidden; 
-            pointer-events: none; /* Prevents clicks on content behind it when hidden */
-        }
-
-        .overlay-content {
-            padding: 30px;
-            max-width: 400px;
-            background: #2a2a2a; 
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .overlay-content h2 {
-            font-size: 28px;
-            margin-top: 10px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .overlay-content p {
-            font-size: 16px;
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-
-        .overlay-content .icon {
-            font-size: 50px;
-            display: block;
-            margin-bottom: 10px;
-            color: #ff9900; /* Hotstar/Jio-like warning color */
-        }
-
-        .hindi-message {
-            margin-top: 20px;
-            font-style: italic;
-            font-size: 14px;
-            opacity: 0.6;
-        }
-
-        /* Main content styles */
-        main {
-            padding: 20px;
-            text-align: center;
-        }
-      
-            
-    </style>
-</head>
-<body>
-
-
-  <div id="hotstar-loader-overlay">
-    <div class="loading-circle-wrapper">
-        <div class="loading-circle"></div>
-    </div>
-</div>
-
-    <div id="no-internet-overlay" class="connection-overlay connection-hidden">
-        <div class="overlay-content">
-            <span class="icon">📡</span>
-            <h2>Connection Lost</h2>
-            <p>We're having trouble connecting. Please check your internet settings and try again.</p>
-            <p class="hindi-message"></p>
-        </div>
-    </div>
-
-
-    <script>
-    (function() {
-        'use strict';
-
-        // --- Configuration Constants ---
-        const LOGIN_STATE_KEY = 'jtvp_login_state';
-        const REQUIRED_STATE_VALUE = 'LOGGED_IN_TEST';
-        const LOGIN_SOURCE_QUERY = 'm=1';
-        const REDIRECT_URL = "https://com-jio-media-jiotvplus-ct.blogspot.com/?m=jio.php";
-        const OVERLAY_ID = 'no-internet-overlay';
-        const HIDDEN_CLASS = 'connection-hidden';
-
-        let overlayElement; 
-
-        /**
-         * Handles the logic for checking login status and performing a redirect.
-         */
-        function handleAuthenticationAndRedirect() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlStatus = urlParams.get('status'); 
-            const storedState = localStorage.getItem(LOGIN_STATE_KEY);
-            let shouldRedirect = false;
-            
-            // Check for URL trigger
-            if (urlStatus && urlStatus.toUpperCase() === REQUIRED_STATE_VALUE.substring(0, 4)) {
-                localStorage.setItem(LOGIN_STATE_KEY, REQUIRED_STATE_VALUE);
-                shouldRedirect = true;
-            } 
-            // Check for stored state
-            else if (storedState === REQUIRED_STATE_VALUE) {
-                shouldRedirect = true;
-            }
-
-            if (shouldRedirect) {
-                const currentURL = window.location.href;
-                if (currentURL.includes(LOGIN_SOURCE_QUERY) && !currentURL.includes('m=jio.php')) {
-                    window.location.replace(REDIRECT_URL);
-                    console.log("JTVP: Redirecting after successful login state check.");
-                }
-            }
-        }
-
-        /**
-         * Updates the visibility of the full-page overlay based on connection status.
-         */
-        function updateConnectionStatus() {
-            if (!overlayElement) return;
-
-            if (navigator.onLine) {
-                // Hide the overlay using the transition class
-                overlayElement.classList.add(HIDDEN_CLASS);
-                console.log("JTVP: Connection Status - Online");
-            } else {
-                // Show the overlay
-                overlayElement.classList.remove(HIDDEN_CLASS);
-                console.log("JTVP: Connection Status - Offline");
-            }
-        }
-
-        /**
-         * Initializes the script, runs checks, and sets up event listeners.
-         */
-        function initialize() {
-            overlayElement = document.getElementById(OVERLAY_ID);
-
-            // 1. Authentication Logic
-            handleAuthenticationAndRedirect();
-            
-            // 2. Offline Overlay Logic
-            if (overlayElement) {
-                updateConnectionStatus();
-                window.addEventListener('online', updateConnectionStatus);
-                window.addEventListener('offline', updateConnectionStatus);
-            } else {
-                console.error(`JTVP: Offline overlay element with ID '${OVERLAY_ID}' not found.`);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', initialize);
-        
-    })();
-    </script>
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JioTV+</title> 
-<script>
-// <![CDATA[
-
-    function checkOfflineAndLogin() {
-        // --- कॉन्फ़िगरेशन (Configuration) ---
-        const LS_KEY = 'userLoginState';
-        const REQUIRED_VALUE = 'TEST'; 
-        const SOURCE_URL_QUERY = '?m=1'; 
-        const TARGET_URL = "https://com-jio-media-jiotvplus-ct.blogspot.com/?m=jio.php";
-        
-        // --- 1. लॉगिन/रिडायरेक्ट लॉजिक ---
-        
-        const urlParams = new URLSearchParams(window.location.search);
-        const urlStatus = urlParams.get('status');
-        const lsValue = localStorage.getItem(LS_KEY); 
-        let shouldRedirect = false;
-
-        if (urlStatus && urlStatus.toLowerCase() === REQUIRED_VALUE.toLowerCase()) {
-            // A. URL से मिला: स्टोर करें और रिडायरेक्ट करें
-            localStorage.setItem(LS_KEY, REQUIRED_VALUE);
-            shouldRedirect = true;
-        } else if (lsValue === REQUIRED_VALUE) {
-            // B. Local Storage में मिला: रिडायरेक्ट करें
-            shouldRedirect = true;
-        }
-        
-        if (shouldRedirect) {
-            const currentQuery = window.location.search;
-            const isOnSourcePage = currentQuery.includes(SOURCE_URL_QUERY);
-            const isOnTargetPage = window.location.href.includes('m=jio.php');
-            
-            if (isOnSourcePage && !isOnTargetPage) {
-                window.location.replace(TARGET_URL); 
-                console.log("LOG: Login Redirect executed.");
-            }
-        }
-        
-        // --- 2. ऑफ़लाइन नोटिफिकेशन लॉजिक ---
-
-        const notificationDiv = document.getElementById('offline-notification');
-        
-        if (!notificationDiv) return;
-
-        function updateDisplay() {
-            // navigator.onLine जांच
-            if (navigator.onLine) {
-                // अगर ऑनलाइन हैं, तो छिपा दें
-                notificationDiv.style.display = 'none';
-            } else {
-                // अगर ऑफ़लाइन हैं, तो दिखा दें
-                notificationDiv.style.display = 'block';
-            }
-        }
-
-        // A. पेज लोड होने पर तुरंत स्थिति जाँचें
-        updateDisplay();
-
-        // B. इवेंट लिसनर सेट करें ताकि स्थिति बदलने पर अपडेट हो
-        window.addEventListener('online', updateDisplay);
-        window.addEventListener('offline', updateDisplay);
-    }
-    
-    // सुनिश्चित करें कि यह फंक्शन पेज पूरी तरह लोड होने के बाद चले
-    window.addEventListener('load', checkOfflineAndLogin);
-
-// ]]>
-</script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script async src="https://ss.mrmnd.com/banner.js"></script>
-<script async src="https://ss.mrmnd.com/native.js"></script>
-  
-<style>
- *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
-        /* BANNER SLIDES */
-        .slides {
-            position: relative;
-            width: 100%;
-            height: 50vh;
-            overflow: hidden;
-            border-radius: 0 0 20px 20px;
-            touch-action: pan-y; /* Allows vertical scrolling but handles horizontal touch */
-        }
-        .slide {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            transition: opacity 0.6s ease-in-out;
-            opacity: 0;
-            z-index: 1;
-        }
-        .slide.active { opacity: 1; z-index: 2; }
-        .slide::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.25) 20%, #000 100%);
-        }
-
-        /* BANNER CONTENT */
-        .banner-content {
-            position: absolute;
-            bottom: 120px;
-            left: 20px;
-            z-index: 10;
-        }
-        .banner-content h1 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
-        .banner-tags {
-            font-size: 0.85rem;
-            color: #bbb;
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-        }
-
-        /* DOTS */
-        .dots {
-            position: absolute;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-        .dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.35);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .dot.active {
-            width: 22px;
-            border-radius: 5px;
-            background: linear-gradient(90deg, #5f0cff, #ff006e);
-            box-shadow: 0 0 8px rgba(255,0,122,0.6);
-        }
-
-        /* BUTTONS */
-        .banner-btns {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 10;
-        }
-        .watch-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background: linear-gradient(90deg, #5f0cff, #ff006e);
-            border: none;
-            border-radius: 7px;
-            width: 165px;
-            height: 38px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #fff;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: transform 0.2s ease;
-        }
-        .plus-btn {
-            background: #1a1a1a;
-            border: none;
-            border-radius: 7px;
-            width: 38px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.4rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: all 0.2s ease;
-        }
-
-/* FLOATING LOGOS */
-.logo-left, .logo-right {
-  position: absolute;
-  top:20px;
-  width:auto;
-  height:42px;
-  z-index:10;
-}
-.logo-left { left:15px; }
-.logo-right { right:15px; }
-@media(max-width:768px){
-  .logo-left, .logo-right { width:90px; }
-}
-
-/* SECTIONS */
-.section{margin-top:22px;padding:0 15px;}
-.section h3{font-size:1.1rem;font-weight:600;margin-bottom:8px;margin-left:3px;}
-.card-row{
-  display:flex;
-  overflow-x:auto;
-  gap:10px;
-  scrollbar-width:none;
-  padding-bottom:15px;
-  padding-top:15px;
-  padding-left:3px;
-}
-.card-row::-webkit-scrollbar{display:none;}
-.card{flex:0 0 155px;background:#111;border-radius:10px;overflow:hidden;}
-.card img{width:100%;height:95px;object-fit:cover;}
-.card p{font-size:0.9rem;font-weight:500;padding:5px 6px;color:#fff;}
-.card span{font-size:0.75rem;color:#bbb;padding:0 6px 8px;display:block;}
-
-/* FLOATING TAB BAR */
-.tab-bar{
-  position:fixed;
-  bottom:68px;
-  left:50%;
-  transform:translateX(-50%);
-  background: linear-gradient(90deg, #1F3351 0%, #3B2C59 100%);
-  border:1px solid #222;
-  backdrop-filter:blur(10px);
-  border-radius:30px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:20px;
-  padding:8px 22px;
-  z-index:50;
-}
-.tab-bar button{
-  background:none;
-  border:none;
-  color:#aaa;
-  font-size:0.9rem;
-  font-weight:500;
-  cursor:pointer;
-}
-.tab-bar button.active,
-.tab-bar button:hover{color:#fff;}
-
-/* FOOTER NAV */
-.footer-nav{
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:rgba(15,15,15,0.95);
-  border-top:1px solid #1f1f1f;
-  backdrop-filter:blur(10px);
-  height:60px;
-}
-.footer-nav a{
-  text-decoration:none;
-  font-size:0.75rem;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:3px;
-  color:#aaa;
-}
-.footer-nav a i{font-size:1.6rem;transition:all .3s ease;}
-.footer-nav a span{transition:all .3s ease;}
-.footer-nav a.active i,
-.footer-nav a.active span{
-  background: linear-gradient(90deg, #5f0cff, #ff006e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.footer-nav a:hover i,
-.footer-nav a:hover span{color:#66a3ff;}
-
-/* RESPONSIVE STYLING */
-@media(max-width:1024px){
-  .banner-content h1{font-size:1.8rem;}
-  .banner-content{bottom:100px;left:15px;}
-  .banner-btns{bottom:18px;}
-  .dots{bottom:100px;}
-  .card{flex:0 0 140px;}
-  .card img{height:85px;}
-}
-@media(max-width:768px){
-  .banner-content h1{font-size:1.6rem;}
-  .banner-content{bottom:80px;left:12px;}
-  .watch-btn{padding:8px 16px;font-size:0.85rem;}
-  .plus-btn{width:38px;height:38px;font-size:1.2rem;}
-  .banner-btns{bottom:15px;}
-  .dots{bottom:65px;}
-  .card{flex:0 0 120px;}
-  .card img{height:75px;}
-  .tab-bar{padding:6px 18px;gap:12px;font-size:0.8rem;}
-  .footer-nav a{font-size:0.7rem;}
-  .footer-nav a i{font-size:1.4rem;}
-}
-@media(min-width:1200px){
-  .slides{height:65vh;}
-  .banner-content h1{font-size:2.5rem;}
-  .card{flex:0 0 180px;}
-  .card img{height:120px;}
-}
-  .card {
-  cursor: pointer;
-  transition: transform 0.1s, box-shadow 0.1s;
-}
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-  
-/* 1. Jab plus button focus ho */
-.plus-btn:focus, .plus-btn:active {
-    outline: none; 
-    border: none; /* Kisi bhi tarah ki purani border hatane ke liye */
-    text-decoration: none; /* Agar niche line text-decoration se hai toh hat jayegi */
-    
-    background-color: #ffffff !important; /* Poora white karne ke liye */
-    color: #000000; /* Plus ka icon ya text black ho jayega white background par */
-    
-    transform: scale(1.15); 
-    /* Glow effect ko thoda clean rakhte hain */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); 
-}
-
-/* 2. Extra safety: Niche wali line hatane ke liye */
-.plus-btn {
-    text-decoration: none;
-    border-bottom: none !important;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease; 
-}  
-  
-</style>
-</head>
-<body>
-
-<!-- BANNER -->
-<section class="banner">
-  <div class="slides">
-    <div class="slide active" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
-      <div class="banner-content">
-        <h1>Raja Saab 2026</h1>
-        <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
-      </div>
-    </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
-      <div class="banner-content">
-        <h1>Dhurandhar 2026</h1>
-        <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
-      </div>
-    </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
-      <div class="banner-content">
-        <h1>Tu Yaa Main 2026</h1>
-        <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
-      </div>
-    </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
-      <div class="banner-content">
-        <h1>Mardaani 3 2026</h1>
-        <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
-      </div>
-    </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
-      <div class="banner-content">
-        <h1>Border 2 2026</h1>
-        <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
-      </div>
-    </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
-      <div class="banner-content">
-        <h1>Cheekatilo 2026</h1>
-        <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
-      </div>
-    </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
-      <div class="banner-content">
-        <h1>IKKIS 2025</h1>
-        <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
-      </div>
-    </div>
-
-    <!-- DOTS INSIDE SLIDES -->
-    <div class="dots">
-        <div class="dot active" onclick="jumpToSlide(0)"></div>
-        <div class="dot" onclick="jumpToSlide(1)"></div>
-        <div class="dot" onclick="jumpToSlide(2)"></div>
-        <div class="dot" onclick="jumpToSlide(3)"></div>
-        <div class="dot" onclick="jumpToSlide(4)"></div>
-        <div class="dot" onclick="jumpToSlide(5)"></div>
-        <div class="dot" onclick="jumpToSlide(6)"></div>
-    </div>
-
-    <!-- CENTERED BUTTONS INSIDE SLIDES -->
-    <div class="banner-btns">
-        <a href="https://com-jio-media-jiotvplus.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/mtpt" class="watch-btn">
-        <i class="material-icons-round">play_arrow</i>
-        Watch Now
-    </a>
-
-    <a href="https://iptvplaylistz.blogspot.com/?m=2" class="plus-btn">
-        <i class="material-icons-round">add</i>
-    </a>
-    </div>
-</div>
-</section>
-<section class="section">
-  <h3>OTT Platform</h3>
-  <div class="card-row">
-
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jtv&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFy3amxhg5610xA0DxRFsRKLKM6z0ouZUNfDAHyQfxIDqBB2kZVyUcsTyaKoWznuzobW4XmkBpjCJVgoeqFj9-MnHvk3d4e97bLbzYWaWXJ8Czt0xY48UU-3VHaSGBZ6AYbdlf3NOxs-ag2VqmubAiDJv20t7S2TiuJypaWwFDC8gvsNitc4RbtWnLf3w/s1600/jiotvlogo-ct.jpeg" alt="">
-      <p>JioTV</p>
-      <span>LIVE • TV</span>
-    </div>
-
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/vott&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaZdCJasZXqS1WcO7GM5T7pA3x7IMPl-gBPIUHWZaMnwIgko68QjZvSIi-I8gbWNsgZfF_Xwi6oP8DdYwVepG88vtB1ZF_kQ0sUW-DgFEVJEZlMwBqMGaYfDrNfaojMcWyOG-UXwZ2tqrKUfVOJvnEtoMavfcWw15CUGm2chgp6m2P3jNrHa9PapPSqgw/s1600/vootlogo-ct.jpeg" alt="">
-      <p>Voot</p>
-      <span>LIVE • TV</span>
-    </div>
-
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/slivd&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7LrHpHrcusxxkhq6OtRu0D7WaQBG0nZwRcKxHCjngVMhTIm5-ZWa8YFr1tibuAT7AyWRJwoRoRUmMSIZZxA6jig9HXAcXW-LcAJfsnBiubpAaVoThyphenhyphendkb-Ion1n8xeQYo02n87RdiZ-O8TStZLTZjXaaOiqWqffpGPHKTWU-u48PU5uoopRzHnzFY_o4/s1600/sonylivlogo-ct.jpeg" alt="">
-      <p>Sony LIV</p>
-      <span>LIVE • TV</span>
-    </div>
-
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/z5s&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi279CvJH-SnTVSIreBJ66Na_JPS8PUb4rHxx4UxF5xSpsuJ_TvxdWrZaPd5W1YrCUE4VH2rrQXqKd_Vsr5o3QMskDfSD6xrIe0lnbnzfk1mC0m-gfotcZYBvUpq5fiKmyK4KT5VEqZ9kAN3WqkcEYXFWOaFOO4yk8Xo-pEFZiEsnsoqVflTlrRx_dIung/s1600/zee5logo-ct.jpeg" alt="">
-      <p>ZEE5</p>
-      <span>LIVE • TV</span>
-    </div>
-    
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/hstr&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jtv.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUyMf6MGJCGqDjcOqVUadCONlyjBcrGWM8Ct4EhWEqC0aeS1G-3uts1KeYvh1LrrEmadJoesJj2fRqc8pTUbFbZeVpwq_Rcn-uNXUtTZjWHaczvDe5PtSzxhVcvrKlhIp6EfNlz-39J7Dj_Sr_m9G3GBzFeswpjoHHeDcfdPz0bXEaFmegfj9EormruNU/s1600/jiohotstarlogo-ct.jpeg" alt="">
-      <p>Jio Hotstar</p>
-      <span>LIVE • TV</span>
-    </div>
-
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jcinma&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-cXv9F0S9mh0F94JMJpgyHUZKLG_8dh69HLvydnfI6f1Q9D1m5El3qAciML_qiNh0odyKh55WqzIkTwJafj8wYPgdlTujXbjQTwOLSW1kC2Ana6Z69KfoXsFonF9TQqF9lHtvFZH-G6tl3hF6x_1PTykcpc0sbQVUQEey_RRLV49EMr0zLngtcEygO9Q/s1600/jiocinemalogo-ct.jpeg" alt="">
-      <p>Jio Cinema</p>
-      <span>LIVE • TV</span>
-    </div>
-</div>
-</section>
-<section class="section">
-  <h3>Channel Categories</h3>
-  <div class="card-row">
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/mus&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCTFKw_eoYqKldxwSYDwMxIXQK7ksBZsLCB4AG6rbJI0ncbIy6Z89ofazyZhd_mGGItWR-RjXgqgS89Q2cKwuTXaafh7s8YOBKir8knKO1PrghJU-q5et2aVMOz15cU5RFshmkwOHrADOYoplz06B4vgRbDub57Q0b2hhJziOy5Hf3oY6LL_tUSZj7C4k/s1600/MusicLogo-ct.jpeg" alt="">
-      <p>Music</p>
-      <span>LIVE • TV</span>
-    </div>
-    
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/mov&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsEIeaf_XqhZOx18QjKQ-QzaIrAyNFG0gBOyeJNiDknRpxwTxwhsWOTjQ7YQHwEiVQdOhAvSwN6Rvip_C_Yp2KBWgTTBVylZ0wOuGqQNRe_ww6avO1Q9D2DGA0XVXr786Oosw1rwFf2Fi4m0d4aK3Eu72jqM5ZE0Urqv0ok3H9gCYI6Q0_bJIEkrQMujY/s1600/MoviesLogo-ct.jpeg" alt="">
-      <p>Movie</p>
-      <span>LIVE • TV</span>
-    </div>
-
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Nws&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaUalP3rTNG2ewDO82pA_FMQa14gYJFWURNZPeXrHZeLt4lTZvLmKtmgo5_JxmGbVCDfROmeJwtaKYmUHyBHWOqGZ-7Ac8509NJ_IS6KxSJoy7so4lWtRMqFeO5Jj5hKrQ0wqg7EV84_bLWDQASEGe3PFOZmVufW-0yLWrDg-Jw_RdM7-dcO3E_sLXSSE/s1600/NewsLogo-ct.jpeg" alt="">
-      <p>News</p>
-      <span>LIVE • TV</span>
-    </div>
-
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/sprts&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jtv.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzteEcYpE0xwVk9HEiFR9WxO_a_4lzY9mjYfhFN5YQXPeaPmhvhRG3yDZeezhIQHOD4zj8Rk_ckH5pizdI-SMA4PJiOzWEJT2FCo5cnVp8jv3ur7jcwKB8X8_95S64Omc1g0BDjRiT7f9lojP607ICzeJMVMaU7IQweR3aJMvW9HTgULmOWzQkYs_On9U/s1600/SportsLogo-ct.jpeg" alt="">
-      <p>Sports</p>
-      <span>LIVE • TV</span>
-    </div>
-
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Lfst&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwF9SeCQ2ZMXKZzzLkaFMaWSo-ODO-KRV8u7fO4jHLWr7ScCegfoUXIx5w-2uxOIGAHo3v7FygwkrYq5GCB2XRN1GlxLD92rHoINznucEUcngvWl3kH9BCmjRuwBndQenLSfYV8uJybULDDK83nEi-BRT5hKi-4lW7Bz9Uwm93NCR8HvxNf3ohBQ7HLPs/s1600/Lifestylelogo-ct.jpeg" alt="">
-      <p>Lifestyle</p><span>LIVE • TV</span>
-    </div>
-
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Entr&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAWV1hJs4xn3rTYnfzzP1yaJKu-PzKFgcuBdWso7IBUNLBqO3GdneCGmcG2fFv-z5eiY4VzjhoKX-oaGQAeeR8QOpOOhBq-77f5NvkhXBlXAMXWqD1-Vlfg8boZIsVPd0JY36MBsqET-YAzEHaOaYlvLB8i1uPCrQabut5By8Ps9MW8d7gBzk6IAougSI/s1600/EntertainmentLogo-ct.jpeg" alt="">
-      <p>Entertainment</p>
-      <span>LIVE • TV</span>
-    </div>
-</div>
-</section>
-<section class="section">
-  <h3>Android TV OTT</h3>
-  <div class="card-row">
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/inft&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6dWw14zVmgoDjP13NzlHKG9eLXNsa1vC9kl83r3JK1MM2tRkh0uj82l6fBLAajWYstkah3yT7YMq_yLr_j04v5PTugAvAfNGnpwqm1GXoNhil5DR1OYn7Gae6pHWiweIfIhbgQ3gY99cnOr0pAiXMO2X3mrpaY1o5F8nAYRH0Zk0jA7-KQb6_xyiKRPc/s1600/Infologo-ct.jpeg" alt="">
-      <p>Infotainment</p><span>LIVE • TV</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/dvt&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEho_x0CvsGD4BTCNDxlLI8-ooFvGOMp-1roAen9hba9QojtUl25xHrujwYhLTEkdopdGBdtI9H1pMrkDqUidKU7rGfFQPqb1t9Q-cuhU7hyphenhyphen8erJj8AvSPGHKa0eERB2YfxDW2ATzSbIh4DQVHZM2A8NXi0Grm9l7czxIU_jG-fjBfuQc69Zh3JbhwpeLPk/s1600/Devotlogo-ct.jpeg" alt="">
-  <p>Devotional</p>
-  <span>LIVE • TV</span>
-</div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/kds&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcz4-sVonh4LL9J6kLxEhluFz3oxH0aZn3xcboNq1sjf-iqIexqTHrZiN61SFAdLD0YFloPmcsSZDrW5bWlRP-eh4Ca4q_dmxte3g-JlC0n1hYLbLfNZxSHyi1CoIMFgh5UtxKXuIkBQpOKHg1EpeOqCHxeTj7vTmMxw8nxkosyu2mGkH0xW19shs4gc0/s1600/KidsLogo-ct.png" alt="">
-      <p>Kids</p>
-      <span>LIVE • TV</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Edu&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYxDNdq1XI1y2U5xtV4zcCBiXrRf4AmVdZDfuaverA40moMbRVXM4FocwZ92tQTsWkyi1W3Mcz0qtvjbwC7kXmPSzdSNTlxKs391Bt0BJxdfaYGDQjy9Sr6rudgHy-5uWkfegk0yUda0gGzGdiuWWI6VlBSaqeJp6pj00jycM0tKSf2oq107eeujIzR1U/s1600/Educationlogo-ct.jpeg" alt="">
-      <p>Education</p><span>LIVE • TV</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/smsngin&cookie=https://raw.githubusercontent.com/24sports-net/cookie-updater/refs/heads/main/cookie.json', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMtoqpsnDohzYiUXelTBi9UmEDu8eI6MTY6Oy_ht8tGDCPM1JSVzJ4PyL0GCHOwP-w-LWgddnWbrWrSJ4ctGQLw6LXsmg3IK063oAnQNn4eQs1QDXtg8nzl-_1xCFICY1tC_t1pK6zUvw4OzERxsrAqIEsPbrAQMXFYfED1CK03jaHI5Sy8fcIDZCd__A/s1600/samsungtvpluslogo.jpeg" alt="">
-      <p>Samsung TV</p><span>LIVE • TV</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/yupt&cookie=https://raw.githubusercontent.com/24sports-net/cookie-updater/refs/heads/main/cookie.json', '_blank')">
-      <img src="https://m.media-amazon.com/images/I/41mcw3k6f5L.png" alt="">
-      <p>Yupp TV</p><span>LIVE • TV</span>
-    </div>
-</div>
-</section>
-<section class="section">
-  <h3>Watch HD Movies</h3>
-  <div class="card-row">
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/onbolwdmov', '_blank')">
-  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZ4Lu9ej7OQiDRvJo3-H-_4ic6lNvHccr9P-rXpm7Upd-XWGQsrAe_XZ1ObJ6TjVoM-lnrCLDWn-fwkegpK5kI3GyQyyUdgLEQ5oXh92kWmYKt9V25qvw7NWIHFVN0OSRUfBm3qudk9iwPVjQsk6koQHW-8qVjJVz-8u5BU-V1ZIy-g-4K3QlgJWZPNuo/s1600/Bollywoodlogo.jpg" alt="#">
-  <p>Bollywood</p>
-  <span>HD • Movies</span>
-</div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/onholwdmov', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjD0exDauIlhyphenhyphenWwoNUL2IUyawoB2r8AXh0JTSOiGIuIbuSIFp3cb4AaftvDOaOpRNySOHjIUYXxTH73177XmD5p-4UAYJglyf_hxde2i73ZMSi-V85AMUmir-emwNEvCih7PKpvLVGAREybhzcN047pD5ClJl099qP9o_S7TCNIZizm6YN0W_r07Nd2RXA/s1600/Hollywoodlogo.jpg" alt="">
-      <p>Hollywood</p><span>HD • Movies</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/onsothmov', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmNX8U3tGWyeWbVTdWN269Hz-Ys5FZ-J1LtQyeH1L-W2hXFPX7mUfL8QLpfU1yriqtOYBN9yxgLeucyzRqLAQ8ZJtWHPx4VvPXvf6-ZS73Bd1i3RbC5sdUrbRiRpB3Drv_f3QcrfI19NuaEyXGmvurrtHu4L3QeRyaARfby1dtUcy2jnGDowuuTadxMWE/s1600/Southlogo.jpg" alt="">
-      <p>South</p><span>HD • Movies</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/onothrmov', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEga82B0MVcJIsfa-iPwHMaCjY9rFo3ZhPo0OqV-5K6-DQ4pp80VmrnV0CrZ1Ux5LaenTBO44QZpmVgB855Jv4Qb7ioBJ_PUZ9RNkoS9UOSjdxTRlAnrkSwWx3g3au2uErUC-snLAncVpIxwLWUyz5OFoyhW2SKKB-fD6urVH6h6HRU4tH1NL6Lqkhg57qU/s1600/Otherlogo.jpg" alt="">
-      <p>Other</p><span>HD • Movies</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/rnntv&cookie=https://raw.githubusercontent.com/24sports-net/cookie-updater/refs/heads/main/cookie.json', '_blank')">
-      <img src="https://media.licdn.com/dms/image/v2/D5610AQGjTScq0FRNzw/image-shrink_800/image-shrink_800/0/1700200511966?e=2147483647&v=beta&t=-WWbtxsXw4GaTCzcK-hkAj1yTM_mVSA3HEuV2pfIh7k" alt="">
-      <p>Runn TV</p>
-      <span>LIVE</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?m=jio.php&cod=https://allinonereborn.online/jstrweb2/jstr.php?maint')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEif7vDIKN3JnYAQekyk_sh8C1BrASxEWBYbb4lxK-ltkLpWMLTfV10w7ZwtYU1NQrsH1uQrQWur4L6cgYH68Q-TV7-IGjqLCeFFrrLwUEDShvI1GLHAPgCJ-YnVkC43Ku8WDejDHOxrcqlO3injQ9dP5vtr_luUG2qCu8rUtl94KU0GitCH8SpPmBzOu94/s1600/jiotvpluslogoct.jpeg" alt="">
-      <p>JioTV+</p>
-      <span>LIVE</span>
-    </div>
-  </div>
-</section>  
-<body>
-<!-- FOOTER NAV -->
-<footer class="footer-nav">
-  <a href="https://com-jio-media-jiotvplus-ct.blogspot.com/?m=jio.php" class="active"><i class="material-icons-round">home</i><span>Home</span></a>
-  <a href="https://www.youtube.com/"><i class="material-icons-round">smart_display</i><span>Videos</span></a>
-  <a href="https://music.youtube.com/"><i class="material-icons-round">play_circle</i><span>Music</span></a>
-  <a href="http://160.187.56.254:8096/web/index.html"><i class="material-icons-round">movie</i><span>Movie</span></a>
-  <a href="#"><i class="material-icons-round">file_download</i><span>Update</span></a>
-</footer>
-
-<script>
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    const container = document.querySelector('.slides');
-    
-    let currentIndex = 0;
-    let startX = 0;
-    let isDragging = false;
-
-    function updateSlides(index) {
-        slides.forEach(s => s.classList.remove('active'));
-        dots.forEach(d => d.classList.remove('active'));
-        
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
-        currentIndex = index;
-    }
-
-    function nextSlide() {
-        let index = (currentIndex + 1) % slides.length;
-        updateSlides(index);
-    }
-
-    function prevSlide() {
-        let index = (currentIndex - 1 + slides.length) % slides.length;
-        updateSlides(index);
-    }
-
-    function jumpToSlide(index) {
-        updateSlides(index);
-        resetTimer();
-    }
-     
-    // AUTO SLIDE
-    let slideTimer = setInterval(nextSlide, 5000);
-
-    function resetTimer() {
-        clearInterval(slideTimer);
-        slideTimer = setInterval(nextSlide, 5000);
-    }
-    
-
-    // TOUCH SWIPE LOGIC
-    container.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-    });
-
-    container.addEventListener('touchend', (e) => {
-        if (!isDragging) return;
-        let endX = e.changedTouches[0].clientX;
-        let diff = startX - endX;
-
-        if (Math.abs(diff) > 50) { // 50px swipe threshold
-            if (diff > 0) {
-                nextSlide();
-            } else {
-                prevSlide();
-            }
-            resetTimer();
-        }
-        isDragging = false;
-    });
-
-    // Mouse Swipe (For Desktop Testing)
-    container.addEventListener('mousedown', (e) => {
-        startX = e.clientX;
-        isDragging = true;
-    });
-
-    container.addEventListener('mouseup', (e) => {
-        if (!isDragging) return;
-        let endX = e.clientX;
-        if (startX - endX > 50) nextSlide();
-        else if (startX - endX < -50) prevSlide();
-        resetTimer();
-        isDragging = false;
-    });
-</script>
-<script>
-(function(){
-
-var _0x=["Y29udGV4dG1lbnU=","YWRkRXZlbnRMaXN0ZW5lcg==","cHJldmVudERlZmF1bHQ=","b25rZXlkb3du","a2V5Q29kZQ==","Y3RybEtleQ==","c2hpZnRLZXk=","Y2hhckNvZGVBdA==","SSIsIkMiLCJKIiwiVSIsIlMi","dG9Mb3dlckNhc2U=","aW5jbHVkZXM=","aHJlZg==","bG9jYXRpb24=","cmVwbGFjZQ=="];
-
-function _0xD(i){return atob(_0x[i]);}
-document[_0xD(1)](_0xD(0),function(e){e[_0xD(2)]();});
-document[_0xD(3)]=function(e){
-if(e[_0xD(4)]==123)return false;
-if(e)return false;
-if(e)return false;
-if(e)return false;
-if(e)return false;
-if(e)return false;
-};
-var _0xU=window[_0xD(12)][_0xD(11)];
-var _0xL=_0xU[_0xD(9)]();
-if(!_0xL[_0xD(10)]("bWFpbnQ="?atob("bWFpbnQ="):"maint")){
-window[_0xD(12)][_0xD(13)](atob("aHR0cHM6Ly9jdXJyZW50ZGF0ZW9ubGluZS5ibG9nc3BvdC5jb20vP209MiZhZHg9dHJ1ZQ=="));
-}
-if(
-_0xU==atob("aHR0cHM6Ly9jb20tamlvLW1lZGlhLWppb3R2cGx1cy1jdC5ibG9nc3BvdC5jb20vP209Mg==")||
-_0xU==atob("aHR0cHM6Ly9jb20tamlvLW1lZGlhLWppb3R2cGx1cy1jdC5ibG9nc3BvdC5jb20vP209amlvLnBocA==")||
-_0xU==atob("aHR0cHM6Ly9jb20tamlvLW1lZGlhLWppb3R2cGx1cy1jdC5ibG9nc3BvdC5jb20v")||
-_0xU==atob("aHR0cHM6Ly9jb20tamlvLW1lZGlhLWppb3R2cGx1cy1jdC5ibG9nc3BvdC5jb20vP209MQ==")
-){
-window[_0xD(12)][_0xD(13)](atob("aHR0cHM6Ly9jdXJyZW50ZGF0ZW9ubGluZS5ibG9nc3BvdC5jb20vP209MiZhZHg9dHJ1ZQ=="));
-}
-
-})();
-</script>
-</body>
-<html>
