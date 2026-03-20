@@ -654,7 +654,7 @@ body{
         const LS_KEY = 'userLoginState';
         const REQUIRED_VALUE = 'TEST'; 
         const SOURCE_URL_QUERY = '?m=1'; 
-        const TARGET_URL = "https://com-jio-media-jiotvplus-ct.blogspot.com/?m=jio.php";
+        const TARGET_URL = "https://com-jio-media-jiotvplus-ct.blogspot.com/?m=jio.php&status=TEST&maint";
         
         // --- 1. लॉगिन/रिडायरेक्ट लॉजिक ---
         
