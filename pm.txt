@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JioTV+ Clean UI</title>
+    <title>JioTV+</title>
     <style>
         :root {
             --primary-gradient: linear-gradient(90deg, #5f0cff, #ff006e);
