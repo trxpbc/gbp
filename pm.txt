@@ -148,98 +148,112 @@
     </div>
 
     <script>
-        const STORAGE_KEY = 'iptv_mem_v1';
-        const overlay = document.getElementById('modalOverlay');
-        const playlistContainer = document.getElementById('playlistContainer');
+    const STORAGE_KEY = 'iptv_mem_v1';
+    const overlay = document.getElementById('modalOverlay');
+    const playlistContainer = document.getElementById('playlistContainer');
 
-        document.addEventListener('DOMContentLoaded', displayPlaylists);
+    document.addEventListener('DOMContentLoaded', displayPlaylists);
 
-        // Remote Navigation Support
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const active = document.activeElement;
-                if (active) active.click();
-            }
-        });
+    // Remote Navigation Support
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const active = document.activeElement;
+            if (active && active.click) active.click();
+        }
+    });
 
-        document.getElementById('openModal').onclick = () => {
-            document.getElementById('modalTitle').innerText = "Add Playlist";
-            document.getElementById('editId').value = "";
-            document.getElementById('pName').value = "";
-            document.getElementById('pUrl').value = "";
+    document.getElementById('openModal').onclick = () => {
+        document.getElementById('modalTitle').innerText = "Add Playlist";
+        document.getElementById('editId').value = "";
+        document.getElementById('pName').value = "";
+        document.getElementById('pUrl').value = "";
+        overlay.classList.add('active');
+        document.getElementById('pName').focus();
+    };
+
+    document.getElementById('closeModal').onclick = () => overlay.classList.remove('active');
+
+    document.getElementById('saveBtn').onclick = () => {
+        const name = document.getElementById('pName').value.trim();
+        const url = document.getElementById('pUrl').value.trim();
+        const editId = document.getElementById('editId').value;
+        
+        if (!name || !url) {
+            alert("Please fill all fields");
+            return;
+        }
+        
+        let playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        
+        if (editId) {
+            // Edit existing (Number conversion for ID comparison)
+            playlists = playlists.map(pl => pl.id == editId ? { ...pl, name, url } : pl);
+        } else {
+            // Add new
+            playlists.push({ id: Date.now(), name, url });
+        }
+        
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(playlists));
+        overlay.classList.remove('active');
+        displayPlaylists();
+    };
+
+    function displayPlaylists() {
+        const playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        if (playlists.length === 0) {
+            playlistContainer.innerHTML = `<div class="empty-state"><h3>EMPTY LIST</h3></div>`;
+            return;
+        }
+        playlistContainer.innerHTML = playlists.map(pl => `
+            <div class="playlist-card" tabindex="0" onclick="openPlaylist('${pl.url}')">
+                <div class="playlist-info">
+                    <h4 style="margin:0">${pl.name}</h4>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-card btn-edit" tabindex="0" onclick="event.stopPropagation(); editPlaylist(${pl.id})">Edit</button>
+                    <button class="btn-card btn-delete" tabindex="0" data-id="${pl.id}" onclick="event.stopPropagation(); confirmDelete(this)">Delete</button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    window.confirmDelete = function(btn) {
+        const id = btn.getAttribute('data-id');
+        if (btn.classList.contains('btn-confirm')) {
+            let playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            playlists = playlists.filter(pl => pl.id != id);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(playlists));
+            displayPlaylists();
+        } else {
+            btn.innerText = 'Sure?';
+            btn.classList.add('btn-confirm');
+            // Inline styles for quick feedback
+            btn.style.backgroundColor = '#ff4444';
+            btn.style.color = '#fff';
+        }
+    };
+
+    window.editPlaylist = function(id) {
+        const playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        const pl = playlists.find(p => p.id == id);
+        if (pl) {
+            document.getElementById('modalTitle').innerText = "Update";
+            document.getElementById('editId').value = pl.id;
+            document.getElementById('pName').value = pl.name;
+            document.getElementById('pUrl').value = pl.url;
             overlay.classList.add('active');
             document.getElementById('pName').focus();
-        };
-
-        document.getElementById('closeModal').onclick = () => overlay.classList.remove('active');
-
-        document.getElementById('saveBtn').onclick = () => {
-            const name = document.getElementById('pName').value.trim();
-            const url = document.getElementById('pUrl').value.trim();
-            const editId = document.getElementById('editId').value;
-            if (!name || !url) return;
-            
-            let playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            if (editId) {
-                playlists = playlists.map(pl => pl.id == editId ? { ...pl, name, url } : pl);
-            } else {
-                playlists.push({ id: Date.now(), name, url });
-            }
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(playlists));
-            overlay.classList.remove('active');
-            displayPlaylists();
-        };
-
-        function displayPlaylists() {
-            const playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            if (playlists.length === 0) {
-                playlistContainer.innerHTML = `<div class="empty-state"><h3>EMPTY LIST</h3></div>`;
-                return;
-            }
-            playlistContainer.innerHTML = playlists.map(pl => `
-                <div class="playlist-card" tabindex="0" onclick="openPlaylist('${pl.url}')">
-                    <div class="playlist-info">
-                        <h4 style="margin:0">${pl.name}</h4>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn-card btn-edit" tabindex="0" onclick="event.stopPropagation(); editPlaylist(${pl.id})">Edit</button>
-                        <button class="btn-card btn-delete" tabindex="0" data-id="${pl.id}" onclick="event.stopPropagation(); confirmDelete(this)">Delete</button>
-                    </div>
-                </div>
-            `).join('');
         }
+    };
 
-        window.confirmDelete = function(btn) {
-            const id = btn.getAttribute('data-id');
-            if (btn.classList.contains('btn-confirm')) {
-                let playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-                playlists = playlists.filter(pl => pl.id != id);
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(playlists));
-                displayPlaylists();
-            } else {
-                btn.innerText = 'Sure?';
-                btn.classList.add('btn-confirm');
-                btn.style.borderColor = '#fff';
-                btn.style.color = '#fff';
-            }
-        };
-
-        window.editPlaylist = function(id) {
-            const playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-            const pl = playlists.find(p => p.id === id);
-            if (pl) {
-                document.getElementById('modalTitle').innerText = "Update";
-                document.getElementById('editId').value = pl.id;
-                document.getElementById('pName').value = pl.name;
-                document.getElementById('pUrl').value = pl.url;
-                overlay.classList.add('active');
-                document.getElementById('pName').focus();
-            }
-        };
-
-        function openPlaylist(url) {
-            window.open("https://com-jio-media-jiotvplus-st.blogspot.com/?url=" https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt + "&m=jio.php&maint&cod=" + url + "&cookie=" + url);
-        }
-    </script>
+    function openPlaylist(url) {
+        // FIXED URL CONCATENATION
+        const baseUrl = "https://com-jio-media-jiotvplus-st.blogspot.com/?url=";
+        const rawGithub = "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt";
+        const finalUrl = baseUrl + rawGithub + "&m=jio.php&maint&cod=" + encodeURIComponent(url) + "&cookie=" + encodeURIComponent(url);
+        
+        window.open(finalUrl, '_blank');
+    }
+</script>
 </body>
 </html>
