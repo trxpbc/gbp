@@ -238,7 +238,7 @@
         };
 
         function openPlaylist(url) {
-            window.open("https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=" + url, '_blank');
+            window.open("https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=" + url&cookie + url, '_blank');
         }
     </script>
 </body>
