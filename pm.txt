@@ -9,6 +9,7 @@
             --primary-gradient: linear-gradient(90deg, #5f0cff, #ff006e);
             --bg-dark: #050505;
             --card-bg: #0f0f0f;
+            --ad-bg: #1a1a1a; /* Dark Grey for Ad */
             --white: #ffffff;
             --focus-ring: #ffffff;
         }
@@ -20,12 +21,42 @@
             color: var(--white); overflow-x: hidden;
         }
 
+        /* --- Ad Card Style --- */
+        .ad-container {
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 20px;
+        }
+        .ad-card {
+            background: var(--ad-bg);
+            border: 1px dashed #333;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+        }
+        .ad-label {
+            font-size: 10px;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .ad-content {
+            color: #888;
+            font-style: italic;
+        }
+
         /* --- Clean & Thin Focus Style --- */
         [tabindex="0"]:focus {
-            outline: 2px solid var(--focus-ring) !important; /* Patli line */
+            outline: 2px solid var(--focus-ring) !important;
             outline-offset: 2px;
-            transform: scale(1.02); /* Halka sa zoom */
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Soft glow */
+            transform: scale(1.02);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
             background: #151515 !important;
             z-index: 10;
             transition: transform 0.2s ease;
@@ -124,6 +155,13 @@
     </div>
 
     <div class="main-content">
+        <div class="ad-container">
+            <div class="ad-card" tabindex="0">
+                <div class="ad-label">Sponsor Advertisement</div>
+                <div class="ad-content">Your Ad Banner Here (Sample)</div>
+            </div>
+        </div>
+
         <div id="playlistContainer"></div>
     </div>
 
@@ -154,7 +192,6 @@
 
     document.addEventListener('DOMContentLoaded', displayPlaylists);
 
-    // Remote Navigation Support
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             const active = document.activeElement;
@@ -186,10 +223,8 @@
         let playlists = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
         
         if (editId) {
-            // Edit existing (Number conversion for ID comparison)
             playlists = playlists.map(pl => pl.id == editId ? { ...pl, name, url } : pl);
         } else {
-            // Add new
             playlists.push({ id: Date.now(), name, url });
         }
         
@@ -227,7 +262,6 @@
         } else {
             btn.innerText = 'Sure?';
             btn.classList.add('btn-confirm');
-            // Inline styles for quick feedback
             btn.style.backgroundColor = '#ff4444';
             btn.style.color = '#fff';
         }
@@ -247,11 +281,9 @@
     };
 
     function openPlaylist(url) {
-        // FIXED URL CONCATENATION
         const baseUrl = "https://com-jio-media-jiotvplus-st.blogspot.com/?url=";
         const rawGithub = "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt";
         const finalUrl = baseUrl + rawGithub + "&m=jio.php&maint&cod=" + encodeURIComponent(url) + "&cookie=" + encodeURIComponent(url);
-        
         window.open(finalUrl, '_blank');
     }
 </script>
