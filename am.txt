@@ -1143,25 +1143,27 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
 <section class="section">
   <h3>Android TV OTT</h3>
   <div class="card-row">
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/inft&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6dWw14zVmgoDjP13NzlHKG9eLXNsa1vC9kl83r3JK1MM2tRkh0uj82l6fBLAajWYstkah3yT7YMq_yLr_j04v5PTugAvAfNGnpwqm1GXoNhil5DR1OYn7Gae6pHWiweIfIhbgQ3gY99cnOr0pAiXMO2X3mrpaY1o5F8nAYRH0Zk0jA7-KQb6_xyiKRPc/s1600/Infologo-ct.jpeg" alt="">
-      <p>Infotainment</p><span>LIVE • TV</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/dvt&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEho_x0CvsGD4BTCNDxlLI8-ooFvGOMp-1roAen9hba9QojtUl25xHrujwYhLTEkdopdGBdtI9H1pMrkDqUidKU7rGfFQPqb1t9Q-cuhU7hyphenhyphen8erJj8AvSPGHKa0eERB2YfxDW2ATzSbIh4DQVHZM2A8NXi0Grm9l7czxIU_jG-fjBfuQc69Zh3JbhwpeLPk/s1600/Devotlogo-ct.jpeg" alt="">
-  <p>Devotional</p>
-  <span>LIVE • TV</span>
-</div>
 
 <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Lfst&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwF9SeCQ2ZMXKZzzLkaFMaWSo-ODO-KRV8u7fO4jHLWr7ScCegfoUXIx5w-2uxOIGAHo3v7FygwkrYq5GCB2XRN1GlxLD92rHoINznucEUcngvWl3kH9BCmjRuwBndQenLSfYV8uJybULDDK83nEi-BRT5hKi-4lW7Bz9Uwm93NCR8HvxNf3ohBQ7HLPs/s1600/Lifestylelogo-ct.jpeg" alt="">
       <p>Lifestyle</p><span>LIVE • TV</span>
     </div>
 
+<div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/inft&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6dWw14zVmgoDjP13NzlHKG9eLXNsa1vC9kl83r3JK1MM2tRkh0uj82l6fBLAajWYstkah3yT7YMq_yLr_j04v5PTugAvAfNGnpwqm1GXoNhil5DR1OYn7Gae6pHWiweIfIhbgQ3gY99cnOr0pAiXMO2X3mrpaY1o5F8nAYRH0Zk0jA7-KQb6_xyiKRPc/s1600/Infologo-ct.jpeg" alt="">
+      <p>Infotainment</p><span>LIVE • TV</span>
+    </div>
     <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Edu&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYxDNdq1XI1y2U5xtV4zcCBiXrRf4AmVdZDfuaverA40moMbRVXM4FocwZ92tQTsWkyi1W3Mcz0qtvjbwC7kXmPSzdSNTlxKs391Bt0BJxdfaYGDQjy9Sr6rudgHy-5uWkfegk0yUda0gGzGdiuWWI6VlBSaqeJp6pj00jycM0tKSf2oq107eeujIzR1U/s1600/Educationlogo-ct.jpeg" alt="">
       <p>Education</p><span>LIVE • TV</span>
     </div>
+
+<div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/dvt&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEho_x0CvsGD4BTCNDxlLI8-ooFvGOMp-1roAen9hba9QojtUl25xHrujwYhLTEkdopdGBdtI9H1pMrkDqUidKU7rGfFQPqb1t9Q-cuhU7hyphenhyphen8erJj8AvSPGHKa0eERB2YfxDW2ATzSbIh4DQVHZM2A8NXi0Grm9l7czxIU_jG-fjBfuQc69Zh3JbhwpeLPk/s1600/Devotlogo-ct.jpeg" alt="">
+  <p>Devotional</p>
+  <span>LIVE • TV</span>
+</div>
+
     <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/smsngin&cookie=https://raw.githubusercontent.com/24sports-net/cookie-updater/refs/heads/main/cookie.json', '_blank')">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeVNEI3I8vmQtWaWKp9nohHgvf0t8WK6xiCpfbiCJd9-BgQRGwYFjU07Q8_GNNjFItX6TB0uvshvWH3oD_FXNg8WKz3ga1XC_UCZe0WytF_QCSkkg5wliPodb19ecyd3SWvofhmEFxo7nsE3mId5TPZWJkiBH-wCjG9PpXSg6zDER0pLaujDRtk82nqMVb/s1600/Shoppinglogo-ct.jpeg" alt="">
       <p>Shopping TV</p><span>LIVE • TV</span>
