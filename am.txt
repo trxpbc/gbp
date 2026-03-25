@@ -1127,10 +1127,10 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
       <p>Sports</p>
       <span>LIVE • TV</span>
     </div>
-
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Lfst&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwF9SeCQ2ZMXKZzzLkaFMaWSo-ODO-KRV8u7fO4jHLWr7ScCegfoUXIx5w-2uxOIGAHo3v7FygwkrYq5GCB2XRN1GlxLD92rHoINznucEUcngvWl3kH9BCmjRuwBndQenLSfYV8uJybULDDK83nEi-BRT5hKi-4lW7Bz9Uwm93NCR8HvxNf3ohBQ7HLPs/s1600/Lifestylelogo-ct.jpeg" alt="">
-      <p>Lifestyle</p><span>LIVE • TV</span>
+<div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/kds&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcz4-sVonh4LL9J6kLxEhluFz3oxH0aZn3xcboNq1sjf-iqIexqTHrZiN61SFAdLD0YFloPmcsSZDrW5bWlRP-eh4Ca4q_dmxte3g-JlC0n1hYLbLfNZxSHyi1CoIMFgh5UtxKXuIkBQpOKHg1EpeOqCHxeTj7vTmMxw8nxkosyu2mGkH0xW19shs4gc0/s1600/KidsLogo-ct.png" alt="">
+      <p>Kids</p>
+      <span>LIVE • TV</span>
     </div>
 
     <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Entr&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
@@ -1152,11 +1152,12 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
   <p>Devotional</p>
   <span>LIVE • TV</span>
 </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/kds&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcz4-sVonh4LL9J6kLxEhluFz3oxH0aZn3xcboNq1sjf-iqIexqTHrZiN61SFAdLD0YFloPmcsSZDrW5bWlRP-eh4Ca4q_dmxte3g-JlC0n1hYLbLfNZxSHyi1CoIMFgh5UtxKXuIkBQpOKHg1EpeOqCHxeTj7vTmMxw8nxkosyu2mGkH0xW19shs4gc0/s1600/KidsLogo-ct.png" alt="">
-      <p>Kids</p>
-      <span>LIVE • TV</span>
+
+<div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Lfst&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwF9SeCQ2ZMXKZzzLkaFMaWSo-ODO-KRV8u7fO4jHLWr7ScCegfoUXIx5w-2uxOIGAHo3v7FygwkrYq5GCB2XRN1GlxLD92rHoINznucEUcngvWl3kH9BCmjRuwBndQenLSfYV8uJybULDDK83nEi-BRT5hKi-4lW7Bz9Uwm93NCR8HvxNf3ohBQ7HLPs/s1600/Lifestylelogo-ct.jpeg" alt="">
+      <p>Lifestyle</p><span>LIVE • TV</span>
     </div>
+
     <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Edu&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYxDNdq1XI1y2U5xtV4zcCBiXrRf4AmVdZDfuaverA40moMbRVXM4FocwZ92tQTsWkyi1W3Mcz0qtvjbwC7kXmPSzdSNTlxKs391Bt0BJxdfaYGDQjy9Sr6rudgHy-5uWkfegk0yUda0gGzGdiuWWI6VlBSaqeJp6pj00jycM0tKSf2oq107eeujIzR1U/s1600/Educationlogo-ct.jpeg" alt="">
       <p>Education</p><span>LIVE • TV</span>
