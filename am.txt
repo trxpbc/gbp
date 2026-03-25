@@ -1164,11 +1164,11 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
   <span>LIVE • TV</span>
 </div>
 
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/smsngin&cookie=https://raw.githubusercontent.com/24sports-net/cookie-updater/refs/heads/main/cookie.json', '_blank')">
+    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Shps&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeVNEI3I8vmQtWaWKp9nohHgvf0t8WK6xiCpfbiCJd9-BgQRGwYFjU07Q8_GNNjFItX6TB0uvshvWH3oD_FXNg8WKz3ga1XC_UCZe0WytF_QCSkkg5wliPodb19ecyd3SWvofhmEFxo7nsE3mId5TPZWJkiBH-wCjG9PpXSg6zDER0pLaujDRtk82nqMVb/s1600/Shoppinglogo-ct.jpeg" alt="">
       <p>Shopping TV</p><span>LIVE • TV</span>
     </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/yupt&cookie=https://raw.githubusercontent.com/24sports-net/cookie-updater/refs/heads/main/cookie.json', '_blank')">
+    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Bsns&cookie=https://raw.githubusercontent.com/alex4528x/m3u/refs/heads/main/jstar.m3u', '_blank')">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPhBSt2FPbT-78M-0a2sBSNtp3yEEZbyk9xMbxZqsEAe6XtCsxmz5dC0kN_JZmJvaNIRK7qoS4ZUhDcpmyUkpCnsFHFQW8m_mbNmAW6bt_hqgB5ASmXNvLVUwfStC_62F_CmjCZmEjgoHT0-QnmS3Odm16pIMxi2QsmP6kHTZ98AqIo8xUlEJEdrVcMwF1/s1600/Businesslogo-ct.jpeg" alt="">
       <p>Business TV</p><span>LIVE • TV</span>
     </div>
