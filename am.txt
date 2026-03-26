@@ -993,15 +993,15 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
 <!-- BANNER -->
 <section class="banner">
   <div class="slides">
-    <div class="slide active" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
+    <div class="slide active" style="background-image:url('http://play.roarzone.info:8096/emby/Items/137815/Images/Primary?maxHeight=456&maxWidth=303&tag=c89bc216a33ab67280b6cca53363bb71&quality=90');">
       <div class="banner-content">
-        <h1>Raja Saab 2026</h1>
+        <h1>Dhurandhar 2025</h1>
         <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
       </div>
     </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
+    <div class="slide" style="background-image:url('http://play.roarzone.info:8096/emby/Items/137909/Images/Primary?maxHeight=456&maxWidth=303&tag=6f89dc19013c477673cc426c3746d798&quality=90');">
       <div class="banner-content">
-        <h1>Dhurandhar 2026</h1>
+        <h1>Dhurandhar The Revenge 2026</h1>
         <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
       </div>
     </div>
