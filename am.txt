@@ -1213,7 +1213,7 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
   <a href="https://www.youtube.com/"><i class="material-icons-round">smart_display</i><span>Videos</span></a>
   <a href="https://music.youtube.com/"><i class="material-icons-round">play_circle</i><span>Music</span></a>
   <a href="http://160.187.56.254:8096/web/index.html"><i class="material-icons-round">movie</i><span>Movie</span></a>
-  <a href="spshg.blogspot.com/?m=jio.php"><i class="material-icons-round">file_download</i><span>Update</span></a>
+  <a href="https://spshg.blogspot.com/?m=jio.php"><i class="material-icons-round">file_download</i><span>Update</span></a>
 </footer>
 
 <script>
