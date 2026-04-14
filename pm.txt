@@ -157,8 +157,9 @@
     <div class="main-content">
         <div class="ad-container">
             <div class="ad-card" tabindex="0">
-                <div class="ad-label">Sponsor Advertisement</div>
-                <div class="ad-content">Your Ad Banner Here (Sample)</div>
+                <script async="async" data-cfasync="false" src="https://pl29154546.profitablecpmratenetwork.com/11e6bcf0c7809568c4b26e254450b893/invoke.js"></script>
+<div id="container-11e6bcf0c7809568c4b26e254450b893"></div>
+
             </div>
         </div>
 
