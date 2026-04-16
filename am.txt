@@ -1064,7 +1064,7 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
   <h3>OTT Platform</h3>
   <div class="card-row">
 
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jtv&cookie=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/m3', '_blank')">
+    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jtprm', '_blank')">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFy3amxhg5610xA0DxRFsRKLKM6z0ouZUNfDAHyQfxIDqBB2kZVyUcsTyaKoWznuzobW4XmkBpjCJVgoeqFj9-MnHvk3d4e97bLbzYWaWXJ8Czt0xY48UU-3VHaSGBZ6AYbdlf3NOxs-ag2VqmubAiDJv20t7S2TiuJypaWwFDC8gvsNitc4RbtWnLf3w/s1600/jiotvlogo-ct.jpeg" alt="">
       <p>JioTV</p>
       <span>LIVE • TV</span>
