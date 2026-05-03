@@ -1094,7 +1094,7 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
       <span>LIVE • TV</span>
     </div>
 
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/zm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jcinma&cookie=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/m3', '_blank')">
+    <div class="card" onclick="window.open('https://tstrcoid.blogspot.com/?m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jcinma&cookie=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/m3', '_blank')">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-cXv9F0S9mh0F94JMJpgyHUZKLG_8dh69HLvydnfI6f1Q9D1m5El3qAciML_qiNh0odyKh55WqzIkTwJafj8wYPgdlTujXbjQTwOLSW1kC2Ana6Z69KfoXsFonF9TQqF9lHtvFZH-G6tl3hF6x_1PTykcpc0sbQVUQEey_RRLV49EMr0zLngtcEygO9Q/s1600/jiocinemalogo-ct.jpeg" alt="">
       <p>Jio Cinema</p>
       <span>LIVE • TV</span>
