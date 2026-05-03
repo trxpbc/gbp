@@ -725,6 +725,7 @@
         return favs.map(ch => {
             if (currentGlobalToken && ch.url && ch.url.includes("__hdnea__=")) {
                 ch.url = ch.url.replace(/__hdnea__=[^&?#]*/, `__hdnea__=${currentGlobalToken}`);
+                ch.tokenValue = currentGlobalToken;
             }
             return ch;
         });
@@ -752,9 +753,8 @@
     function createBaseCard(ch, isRelated) {
         const div = document.createElement("div");
         div.className = "channel-card";
-        div.tabIndex = 0; // Accessibility and Remote Support
+        div.tabIndex = 0;
         if (isRelated) Object.assign(div.style, { width: "130px", height: "102px", flex: "0 0 auto" });
-        
         div.innerHTML = `
             <div class="channel-card__logo-box" style="${isRelated ? 'height: 60px;' : 'height: 80px;'}">
                 <img src="${ch.logo}" onerror="this.src='${DEFAULT_IMAGE}'" loading="lazy">
@@ -765,7 +765,7 @@
         return div;
     }
 
-    // --- Category Logic ---
+    // --- Category / Pill System ---
     function renderPills(channels) {
         if (!pillContainer) return;
         const categories = new Set();
@@ -782,13 +782,11 @@
                 e.preventDefault();
                 document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
                 pill.classList.add('active');
-                const filtered = allChannels.filter(c => c.category === cat);
-                renderChannelCards(filtered);
+                renderChannelCards(allChannels.filter(c => c.category === cat));
             };
             pillContainer.appendChild(pill);
         });
 
-        // "All Channels" click event
         pillContainer.firstChild.onclick = (e) => {
             e.preventDefault();
             document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
@@ -855,7 +853,7 @@
         };
     }
 
-    // --- Data Loading ---
+    // --- Loading & Parsing ---
     async function loadPlaylist() {
         const params = new URLSearchParams(window.location.search);
         const m3uMain = params.get("cod") || localStorage.getItem("cod_url") || DEFAULT_PLAYLIST_URL;
@@ -868,7 +866,9 @@
                 let newToken = "";
                 try {
                     const jsonData = JSON.parse(rawText);
-                    if (jsonData.cookieHeader) newToken = jsonData.cookieHeader.replace('__hdnea__=', '');
+                    if (jsonData.cookieHeader) {
+                        newToken = jsonData.cookieHeader.replace('__hdnea__=', '');
+                    }
                 } catch(e) {
                     newToken = (/__hdnea__=st=[^"'\s\r\n]*/.exec(rawText) || [""])[0].replace('__hdnea__=', '');
                 }
@@ -877,13 +877,30 @@
 
             const resMain = await fetch(m3uMain);
             const rawData = await resMain.text();
-            return parseM3U(rawData);
+            
+            // Check if JSON or M3U
+            if (rawData.trim().startsWith('{') || rawData.trim().startsWith('[')) {
+                const jsonData = JSON.parse(rawData);
+                const list = jsonData.channels || (Array.isArray(jsonData) ? jsonData : []);
+                return list.map(item => ({
+                    name: item.name || item.title || "Unknown",
+                    logo: item.logo || item.image || item.tvg_logo || "",
+                    url: item.mpd || item.url || item.link || "",
+                    category: item.category || item.group || "",
+                    keyId: item.keyId || (item.drm ? Object.keys(item.drm)[0] : null),
+                    key: item.key || (item.drm ? Object.values(item.drm)[0] : null),
+                    tokenValue: (item.token || item.url || "").match(/__hdnea__=([^&?]+)/)?.[1] || getToken()
+                }));
+            } else {
+                return parseM3U(rawData);
+            }
         } catch (e) { return []; }
     }
 
     function parseM3U(text) {
         const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
         const channels = []; let cur = {};
+        const savedToken = getToken();
         for (const line of lines) {
             if (line.startsWith("#EXTINF")) {
                 cur.name = line.split(",").pop().trim();
@@ -893,8 +910,8 @@
                 const parts = line.split("=").pop().trim().split(":");
                 if (parts.length === 2) [cur.keyId, cur.key] = parts;
             } else if (/^https?:\/\//i.test(line)) {
-                cur.url = line;
-                cur.tokenValue = line.match(/__hdnea__=([^&?]+)/)?.[1] || getToken();
+                cur.url = savedToken ? line.replace(/(__hdnea__=)([^&?#]*)/, `$1${savedToken}`) : line;
+                cur.tokenValue = cur.url.match(/__hdnea__=([^&?]+)/)?.[1] || savedToken;
                 channels.push({ ...cur }); cur = {};
             }
         }
@@ -924,13 +941,13 @@
         let playUrl = params.get("play"); 
         if (playUrl) {
             const cleanUrl = playUrl.split('|')[0];
-            const target = allChannels.find(c => c.url === cleanUrl);
+            const target = allChannels.find(c => c.url.includes(cleanUrl));
             if (target) playChannel(target, false);
         }
         $loader.style.display = "none";
     }
 
-    // --- Events & Navigation ---
+    // --- Input & Navigation ---
     if ($mainFavBtn) $mainFavBtn.onclick = () => {
         if (!currentPlayingChannel) return;
         let favs = JSON.parse(localStorage.getItem('my_iptv_favs')) || [];
@@ -950,10 +967,8 @@
         const active = document.activeElement;
         const allPills = document.querySelectorAll('.pill');
         const currentIndex = Array.from(allPills).indexOf(active);
-
-        if (e.key === 'ArrowRight' && currentIndex < allPills.length - 1) {
-            allPills[currentIndex + 1].focus();
-        } else if (e.key === 'ArrowLeft') {
+        if (e.key === 'ArrowRight' && currentIndex < allPills.length - 1) allPills[currentIndex + 1].focus();
+        else if (e.key === 'ArrowLeft') {
             if (active === $searchInput && allPills.length > 0) allPills[allPills.length - 1].focus();
             else if (currentIndex > 0) allPills[currentIndex - 1].focus();
         }
