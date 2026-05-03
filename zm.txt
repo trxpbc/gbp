@@ -708,7 +708,7 @@
     const $favGrid = document.getElementById("favoritesGrid");
     const $mainFavBtn = document.getElementById("mainFavBtn");
     const $searchInput = document.getElementById("searchInput");
-    const pillContainer = document.getElementById('pillContainer');
+    const $pillContainer = document.getElementById("pillContainer"); // Added for Categories
 
     // --- State ---
     let allChannels = [];
@@ -722,10 +722,13 @@
     const getFavs = () => {
         let favs = JSON.parse(localStorage.getItem('my_iptv_favs')) || [];
         const currentGlobalToken = getToken();
+        
         return favs.map(ch => {
-            if (currentGlobalToken && ch.url && ch.url.includes("__hdnea__=")) {
-                ch.url = ch.url.replace(/__hdnea__=[^&?#]*/, `__hdnea__=${currentGlobalToken}`);
+            if (currentGlobalToken) {
                 ch.tokenValue = currentGlobalToken;
+                if (ch.url && ch.url.includes("__hdnea__=")) {
+                    ch.url = ch.url.replace(/__hdnea__=[^&?#]*/, `__hdnea__=${currentGlobalToken}`);
+                }
             }
             return ch;
         });
@@ -753,46 +756,46 @@
     function createBaseCard(ch, isRelated) {
         const div = document.createElement("div");
         div.className = "channel-card";
-        div.tabIndex = 0;
-        if (isRelated) Object.assign(div.style, { width: "130px", height: "102px", flex: "0 0 auto" });
+        if (isRelated) {
+            Object.assign(div.style, { width: "130px", height: "102px", flex: "0 0 auto" });
+        }
         div.innerHTML = `
             <div class="channel-card__logo-box" style="${isRelated ? 'height: 60px;' : 'height: 80px;'}">
                 <img src="${ch.logo}" onerror="this.src='${DEFAULT_IMAGE}'" loading="lazy">
             </div>
-            <h3 class="channel-card__title" style="font-size: 13px;">${ch.name}</h3>
+            <h3 class="channel-card__title" style="font-size: ${isRelated ? '13px' : '13px'};">${ch.name}</h3>
         `;
         div.onclick = () => playChannel(ch);
         return div;
     }
 
-    // --- Category / Pill System ---
+    // --- Category Pill Logic ---
     function renderPills(channels) {
-        if (!pillContainer) return;
+        if (!$pillContainer) return;
         const categories = new Set();
         channels.forEach(ch => { if(ch.category) categories.add(ch.category); });
 
-        pillContainer.innerHTML = '<a href="#" class="pill active" tabindex="0">All Channels</a>';
+        $pillContainer.innerHTML = '<div class="pill active" onclick="filterByCategory(\'All\', this)">All</div>';
         
         Array.from(categories).sort().forEach(cat => {
-            const pill = document.createElement('a');
+            const pill = document.createElement('div');
             pill.className = 'pill';
-            pill.tabIndex = 0;
             pill.textContent = cat;
-            pill.onclick = (e) => {
-                e.preventDefault();
-                document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
-                renderChannelCards(allChannels.filter(c => c.category === cat));
-            };
-            pillContainer.appendChild(pill);
+            pill.onclick = () => filterByCategory(cat, pill);
+            $pillContainer.appendChild(pill);
         });
+    }
 
-        pillContainer.firstChild.onclick = (e) => {
-            e.preventDefault();
-            document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-            pillContainer.firstChild.classList.add('active');
+    function filterByCategory(category, el) {
+        document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+        el.classList.add('active');
+        
+        if (category === 'All') {
             renderChannelCards(allChannels);
-        };
+        } else {
+            const filtered = allChannels.filter(c => c.category === category);
+            renderChannelCards(filtered);
+        }
     }
 
     // --- Player Logic ---
@@ -802,12 +805,19 @@
         
         const activeToken = channel.tokenValue || getToken() || "";
         const drmInfo = (channel.keyId && channel.key) ? `&drmScheme=clearkey&drmLicense=${channel.keyId}:${channel.key}` : "";
-        const extraParams = `|Cookie=__hdnea__=${activeToken}&Origin=https://jiotv.com/&Referer=https://jiotv.com/&User-Agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0${drmInfo}`;
         
-        if (pushState) window.history.pushState({ playerOpen: true }, "", `?play=${channel.url}${extraParams}`);
+        const extraParams = `|Cookie=__hdnea__=${activeToken}&Origin=https://jiotv.com/&Referer=https://jiotv.com/&User-Agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0${drmInfo}`;
+        const finalUrlToShow = channel.url + extraParams;
+
+        if (pushState) {
+            window.history.pushState({ playerOpen: true }, "", `?play=${finalUrlToShow}`);
+        } else {
+            window.history.replaceState({ playerOpen: true }, "", `?play=${finalUrlToShow}`);
+        }
 
         $container.style.display = "none";
         if($favSection) $favSection.style.display = "none";
+        if($pillContainer) $pillContainer.style.display = "none"; // Hide pills when playing
         $playerContainer.style.display = "block";
         $loader.style.display = "flex";
         
@@ -824,7 +834,8 @@
                 drm: (channel.keyId && channel.key) ? { clearkey: { keyId: channel.keyId, key: channel.key } } : undefined
             }],
             autostart: true, width: "100%", aspectratio: "16:9", stretching: "exactfit",
-            logo: { file: WATERMARK_URL, position: "bottom-right" }
+            logo: { file: WATERMARK_URL, position: "bottom-right" },
+            skin: { name: "jw-gradient" }
         });
 
         jwplayerInstance.on("firstFrame", () => { $loader.style.display = "none"; });
@@ -836,6 +847,7 @@
         if (jwplayerInstance) { jwplayerInstance.remove(); jwplayerInstance = null; }
         $playerContainer.style.display = "none";
         $container.style.display = "grid"; 
+        if($pillContainer) $pillContainer.style.display = "flex"; // Show pills back
         currentPlayingChannel = null;
         updateFavUI();
         window.history.replaceState({}, document.title, window.location.pathname);
@@ -853,7 +865,6 @@
         };
     }
 
-    // --- Loading & Parsing ---
     async function loadPlaylist() {
         const params = new URLSearchParams(window.location.search);
         const m3uMain = params.get("cod") || localStorage.getItem("cod_url") || DEFAULT_PLAYLIST_URL;
@@ -864,6 +875,7 @@
                 const resSrc = await fetch(srcLink);
                 const rawText = await resSrc.text();
                 let newToken = "";
+                
                 try {
                     const jsonData = JSON.parse(rawText);
                     if (jsonData.cookieHeader) {
@@ -872,46 +884,60 @@
                 } catch(e) {
                     newToken = (/__hdnea__=st=[^"'\s\r\n]*/.exec(rawText) || [""])[0].replace('__hdnea__=', '');
                 }
+
                 if (newToken) saveToken(newToken);
             }
 
             const resMain = await fetch(m3uMain);
             const rawData = await resMain.text();
-            
-            // Check if JSON or M3U
+            let finalChannels = [];
+
             if (rawData.trim().startsWith('{') || rawData.trim().startsWith('[')) {
                 const jsonData = JSON.parse(rawData);
                 const list = jsonData.channels || (Array.isArray(jsonData) ? jsonData : []);
-                return list.map(item => ({
-                    name: item.name || item.title || "Unknown",
-                    logo: item.logo || item.image || item.tvg_logo || "",
-                    url: item.mpd || item.url || item.link || "",
-                    category: item.category || item.group || "",
-                    keyId: item.keyId || (item.drm ? Object.keys(item.drm)[0] : null),
-                    key: item.key || (item.drm ? Object.values(item.drm)[0] : null),
-                    tokenValue: (item.token || item.url || "").match(/__hdnea__=([^&?]+)/)?.[1] || getToken()
-                }));
+                finalChannels = list.map(item => {
+                    let extractedKeyId = null, extractedKey = null;
+                    if (item.drm && typeof item.drm === 'object') {
+                        const keys = Object.keys(item.drm);
+                        if (keys.length > 0) {
+                            extractedKeyId = keys[0];
+                            extractedKey = item.drm[extractedKeyId];
+                        }
+                    }
+                    return {
+                        name: item.name || item.title || "Unknown",
+                        logo: item.logo || item.image || item.tvg_logo || "",
+                        url: item.mpd || item.url || item.link || "",
+                        category: item.category || item.group || "General", // JSON Category
+                        keyId: item.keyId || item.key_id || extractedKeyId,
+                        key: item.key || item.license_key || extractedKey,
+                        tokenValue: (item.token || item.url || "").match(/__hdnea__=([^&?]+)/)?.[1] || getToken()
+                    };
+                });
             } else {
-                return parseM3U(rawData);
+                let m3uText = rawData;
+                const savedToken = getToken();
+                if (savedToken) m3uText = m3uText.replace(/(__hdnea__=)([^ \n\r\t"']*)/g, `__hdnea__=${savedToken}`);
+                finalChannels = parseM3U(m3uText);
             }
+            return finalChannels;
         } catch (e) { return []; }
     }
 
     function parseM3U(text) {
         const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
         const channels = []; let cur = {};
-        const savedToken = getToken();
         for (const line of lines) {
             if (line.startsWith("#EXTINF")) {
                 cur.name = line.split(",").pop().trim();
                 cur.logo = (line.match(/tvg-logo="(.*?)"/) || [])[1] || "";
-                cur.category = (line.match(/group-title="(.*?)"/) || [])[1] || "";
+                cur.category = (line.match(/group-title="(.*?)"/) || [])[1] || "General"; // M3U Category
             } else if (line.includes("license_key")) {
                 const parts = line.split("=").pop().trim().split(":");
                 if (parts.length === 2) [cur.keyId, cur.key] = parts;
             } else if (/^https?:\/\//i.test(line)) {
-                cur.url = savedToken ? line.replace(/(__hdnea__=)([^&?#]*)/, `$1${savedToken}`) : line;
-                cur.tokenValue = cur.url.match(/__hdnea__=([^&?]+)/)?.[1] || savedToken;
+                cur.url = line;
+                cur.tokenValue = line.match(/__hdnea__=([^&?]+)/)?.[1] || getToken();
                 channels.push({ ...cur }); cur = {};
             }
         }
@@ -929,31 +955,32 @@
     }
 
     async function initializeApplication() {
-        if(typeof lucide !== 'undefined') lucide.createIcons();
         jwplayer.key = PLAYER_KEY;
         $loader.style.display = "flex";
         allChannels = await loadPlaylist();
         renderChannelCards(allChannels);
-        renderPills(allChannels);
+        renderPills(allChannels); // Initialize Pills
         updateFavUI();
         
         const params = new URLSearchParams(window.location.search);
         let playUrl = params.get("play"); 
         if (playUrl) {
             const cleanUrl = playUrl.split('|')[0];
-            const target = allChannels.find(c => c.url.includes(cleanUrl));
+            const target = allChannels.find(c => c.url === cleanUrl);
             if (target) playChannel(target, false);
         }
         $loader.style.display = "none";
     }
 
-    // --- Input & Navigation ---
     if ($mainFavBtn) $mainFavBtn.onclick = () => {
         if (!currentPlayingChannel) return;
         let favs = JSON.parse(localStorage.getItem('my_iptv_favs')) || [];
         const idx = favs.findIndex(f => f.name === currentPlayingChannel.name);
-        if (idx > -1) favs.splice(idx, 1);
-        else favs.push(currentPlayingChannel);
+        if (idx > -1) {
+            favs.splice(idx, 1);
+        } else {
+            favs.push(currentPlayingChannel);
+        }
         localStorage.setItem('my_iptv_favs', JSON.stringify(favs));
         updateFavUI();
     };
@@ -961,18 +988,10 @@
     if($searchInput) $searchInput.oninput = (e) => {
         const term = e.target.value.toLowerCase();
         renderChannelCards(allChannels.filter(c => c.name.toLowerCase().includes(term)));
+        // Reset pills to 'All' visually when searching
+        document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+        if(document.querySelector('.pill')) document.querySelector('.pill').classList.add('active');
     };
-
-    document.addEventListener('keydown', (e) => {
-        const active = document.activeElement;
-        const allPills = document.querySelectorAll('.pill');
-        const currentIndex = Array.from(allPills).indexOf(active);
-        if (e.key === 'ArrowRight' && currentIndex < allPills.length - 1) allPills[currentIndex + 1].focus();
-        else if (e.key === 'ArrowLeft') {
-            if (active === $searchInput && allPills.length > 0) allPills[allPills.length - 1].focus();
-            else if (currentIndex > 0) allPills[currentIndex - 1].focus();
-        }
-    });
 
     document.addEventListener("DOMContentLoaded", initializeApplication);  
 </script>
