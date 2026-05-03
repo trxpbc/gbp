@@ -1088,7 +1088,7 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
       <span>LIVE • TV</span>
     </div>
     
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/sm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/alex4528y/m3u/refs/heads/main/jtv.m3u', '_blank')">
+    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-pt.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/sm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/alex4528y/m3u/refs/heads/main/jtv.m3u', '_blank')">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUyMf6MGJCGqDjcOqVUadCONlyjBcrGWM8Ct4EhWEqC0aeS1G-3uts1KeYvh1LrrEmadJoesJj2fRqc8pTUbFbZeVpwq_Rcn-uNXUtTZjWHaczvDe5PtSzxhVcvrKlhIp6EfNlz-39J7Dj_Sr_m9G3GBzFeswpjoHHeDcfdPz0bXEaFmegfj9EormruNU/s1600/jiohotstarlogo-ct.jpeg" alt="">
       <p>Jio Hotstar</p>
       <span>LIVE • TV</span>
