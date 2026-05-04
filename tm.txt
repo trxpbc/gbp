@@ -855,6 +855,7 @@
         const params = new URLSearchParams(window.location.search);
         const m3uMain = params.get("cod") || localStorage.getItem("cod_url") || DEFAULT_PLAYLIST_URL;
         const srcLink = params.get("cookie") || params.get("src");
+        
         try {
             if (srcLink) {
                 const resSrc = await fetch(srcLink);
@@ -862,17 +863,26 @@
                 let newToken = "";
                 try {
                     const jsonData = JSON.parse(rawText);
-                    if (jsonData.cookieHeader) {
+                    // Updated logic to handle both Array and Object structures
+                    if (Array.isArray(jsonData)) {
+                        const cookieItem = jsonData.find(item => item.cookie);
+                        if (cookieItem && cookieItem.cookie) {
+                            newToken = cookieItem.cookie.replace('__hdnea__=', '');
+                        }
+                    } else if (jsonData.cookieHeader) {
                         newToken = jsonData.cookieHeader.replace('__hdnea__=', '');
                     }
                 } catch(e) {
+                    // Fallback to Regex if JSON parsing fails
                     newToken = (/__hdnea__=st=[^"'\s\r\n]*/.exec(rawText) || [""])[0].replace('__hdnea__=', '');
                 }
                 if (newToken) saveToken(newToken);
             }
+
             const resMain = await fetch(m3uMain);
             const rawData = await resMain.text();
             let finalChannels = [];
+            
             if (rawData.trim().startsWith('{') || rawData.trim().startsWith('[')) {
                 const jsonData = JSON.parse(rawData);
                 const list = jsonData.channels || (Array.isArray(jsonData) ? jsonData : []);
@@ -936,7 +946,6 @@
     }
 
     async function initializeApplication() {
-        // Fix: Lucide icons ko create karne ke liye ye line zaruri hai
         if (window.lucide) {
             lucide.createIcons();
         }
