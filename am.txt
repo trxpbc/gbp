@@ -993,45 +993,45 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
 <!-- BANNER -->
 <section class="banner">
   <div class="slides">
-    <div class="slide active" style="background-image:url('http://play.roarzone.info:8096/emby/Items/137815/Images/Primary?maxHeight=456&maxWidth=303&tag=c89bc216a33ab67280b6cca53363bb71&quality=90');">
+    <div class="slide active" style="background-image:url('https://m.media-amazon.com/images/M/MV5BNGE2NmNkZTctYjM3OC00Y2YyLWFhYjgtNjgwZWZiNWZlZDMxXkEyXkFqcGc@._V1_.jpg');">
       <div class="banner-content">
-        <h1>Dhurandhar 2025</h1>
+        <h1>Bhooth Bangla 2026</h1>
         <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
       </div>
     </div>
-    <div class="slide" style="background-image:url('http://play.roarzone.info:8096/emby/Items/137909/Images/Primary?maxHeight=456&maxWidth=303&tag=6f89dc19013c477673cc426c3746d798&quality=90');">
+    <div class="slide" style="background-image:url('https://m.media-amazon.com/images/M/MV5BZDk0YzdmOTAtNTFmMi00NTQ0LThhMTAtNGY1NDRkNmIyODdmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg');">
       <div class="banner-content">
-        <h1>Dhurandhar The Revenge 2026</h1>
+        <h1>Toaster 2026</h1>
         <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
       </div>
     </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
+    <div class="slide" style="background-image:url('https://m.media-amazon.com/images/M/MV5BN2NhYzE1YTUtNDA0Yi00ZjhlLWEyMzUtN2UxMzkzZTdkMDRlXkEyXkFqcGc@._V1_QL75_UY281_CR18,0,190,281_.jpg');">
       <div class="banner-content">
-        <h1>Tu Yaa Main 2026</h1>
+        <h1>180 Movie 2026</h1>
         <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
       </div>
     </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
+    <div class="slide" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOwDWK65sgqPFku4x5EdV26Igg95l_ghYGwg&s');">
       <div class="banner-content">
-        <h1>Mardaani 3 2026</h1>
+        <h1>Raja Shivaji 2026</h1>
         <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
       </div>
     </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
+    <div class="slide" style="background-image:url('https://m.media-amazon.com/images/M/MV5BYTY4MGVmOGYtMDdlZC00ODM0LWIyMWMtMTkxNWMzMTczOGUwXkEyXkFqcGc@._V1_.jpg');">
       <div class="banner-content">
-        <h1>Border 2 2026</h1>
+        <h1>Dacoit 2026</h1>
         <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
       </div>
     </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
+    <div class="slide" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_RGbo6-KlVNbxIL40MwMwoI7VnNQNC_sQ1w&s');">
       <div class="banner-content">
-        <h1>Cheekatilo 2026</h1>
+        <h1>18Th Rose 2026</h1>
         <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
       </div>
     </div>
-    <div class="slide" style="background-image:url('https://prabhas.in/uploads/movies/68f9366d37774_1761162861.jpg');">
+    <div class="slide" style="background-image:url('https://m.media-amazon.com/images/M/MV5BZjg5OWI2MTgtZjcyMS00MTcwLTk2ZDQtZDcwMmI4NjI4MWVhXkEyXkFqcGc@._V1_.jpg');">
       <div class="banner-content">
-        <h1>IKKIS 2025</h1>
+        <h1>Agent Zeta 2026</h1>
         <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
       </div>
     </div>
