@@ -765,7 +765,7 @@
                 <div data-mndbanid="9d0bba76-40cc-41f5-a1dc-d1d66926e14e"></div>
             </div>
 
-            <h2>Related Channels</h2>
+            <h2>Related Movies</h2>
             <div class="related__list" id="relatedList"></div>
         </div>
         
