@@ -1141,7 +1141,7 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
 </div>
 </section>
 <section class="section">
-  <h3>Android TV OTT</h3>
+  <h3>More Categories</h3>
   <div class="card-row">
 
 <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/Lfst&cookie=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/m3', '_blank')">
@@ -1174,38 +1174,7 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
     </div>
 </div>
 </section>
-<section class="section">
-  <h3>Watch HD Movies</h3>
-  <div class="card-row">
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/onbolwdmov', '_blank')">
-  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZ4Lu9ej7OQiDRvJo3-H-_4ic6lNvHccr9P-rXpm7Upd-XWGQsrAe_XZ1ObJ6TjVoM-lnrCLDWn-fwkegpK5kI3GyQyyUdgLEQ5oXh92kWmYKt9V25qvw7NWIHFVN0OSRUfBm3qudk9iwPVjQsk6koQHW-8qVjJVz-8u5BU-V1ZIy-g-4K3QlgJWZPNuo/s1600/Bollywoodlogo.jpg" alt="#">
-  <p>Bollywood</p>
-  <span>HD • Movies</span>
-</div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/onholwdmov', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjD0exDauIlhyphenhyphenWwoNUL2IUyawoB2r8AXh0JTSOiGIuIbuSIFp3cb4AaftvDOaOpRNySOHjIUYXxTH73177XmD5p-4UAYJglyf_hxde2i73ZMSi-V85AMUmir-emwNEvCih7PKpvLVGAREybhzcN047pD5ClJl099qP9o_S7TCNIZizm6YN0W_r07Nd2RXA/s1600/Hollywoodlogo.jpg" alt="">
-      <p>Hollywood</p><span>HD • Movies</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/onsothmov', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmNX8U3tGWyeWbVTdWN269Hz-Ys5FZ-J1LtQyeH1L-W2hXFPX7mUfL8QLpfU1yriqtOYBN9yxgLeucyzRqLAQ8ZJtWHPx4VvPXvf6-ZS73Bd1i3RbC5sdUrbRiRpB3Drv_f3QcrfI19NuaEyXGmvurrtHu4L3QeRyaARfby1dtUcy2jnGDowuuTadxMWE/s1600/Southlogo.jpg" alt="">
-      <p>South</p><span>HD • Movies</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/onothrmov', '_blank')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEga82B0MVcJIsfa-iPwHMaCjY9rFo3ZhPo0OqV-5K6-DQ4pp80VmrnV0CrZ1Ux5LaenTBO44QZpmVgB855Jv4Qb7ioBJ_PUZ9RNkoS9UOSjdxTRlAnrkSwWx3g3au2uErUC-snLAncVpIxwLWUyz5OFoyhW2SKKB-fD6urVH6h6HRU4tH1NL6Lqkhg57qU/s1600/Otherlogo.jpg" alt="">
-      <p>Other</p><span>HD • Movies</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/rnntv&cookie=https://raw.githubusercontent.com/24sports-net/cookie-updater/refs/heads/main/cookie.json', '_blank')">
-      <img src="https://media.licdn.com/dms/image/v2/D5610AQGjTScq0FRNzw/image-shrink_800/image-shrink_800/0/1700200511966?e=2147483647&v=beta&t=-WWbtxsXw4GaTCzcK-hkAj1yTM_mVSA3HEuV2pfIh7k" alt="">
-      <p>Runn TV</p>
-      <span>LIVE</span>
-    </div>
-    <div class="card" onclick="window.open('https://com-jio-media-jiotvplus-st.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tm.txt&m=jio.php&maint&cod=https://allinonereborn.online/jstrweb2/jstr.php?maint')">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEif7vDIKN3JnYAQekyk_sh8C1BrASxEWBYbb4lxK-ltkLpWMLTfV10w7ZwtYU1NQrsH1uQrQWur4L6cgYH68Q-TV7-IGjqLCeFFrrLwUEDShvI1GLHAPgCJ-YnVkC43Ku8WDejDHOxrcqlO3injQ9dP5vtr_luUG2qCu8rUtl94KU0GitCH8SpPmBzOu94/s1600/jiotvpluslogoct.jpeg" alt="">
-      <p>JioTV+</p>
-      <span>LIVE</span>
-    </div>
-  </div>
-</section>  
+  
 <body>
 <!-- FOOTER NAV -->
 <footer class="footer-nav">
