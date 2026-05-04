@@ -1023,7 +1023,7 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
         <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
       </div>
     </div>
-    <div class="slide" style="background-image:url('https://m.media-amazon.com/images/M/MV5BZjg5OWI2MTgtZjcyMS00MTcwLTk2ZDQtZDcwMmI4NjI4MWVhXkEyXkFqcGc@._V1_.jpg');">
+    <div class="slide" style="background-image:url('https://m.media-amazon.com/images/M/MV5BMjg0ODBhZDMtZTc2OC00NWZiLTliYzgtOGU1MDAxMzhkNDhiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg');">
       <div class="banner-content">
         <h1>18Th Rose 2026</h1>
         <div class="banner-tags"><span>Entertainment</span>•<span>HD Movies</span></div>
