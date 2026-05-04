@@ -713,7 +713,7 @@ body{
 
 // ]]>
 </script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
+<link rel="preload" href="https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script async src="https://ss.mrmnd.com/banner.js"></script>
 <script async src="https://ss.mrmnd.com/native.js"></script>
