@@ -996,12 +996,53 @@
 
     function renderChannelCards(channels) {
         $container.innerHTML = "";
-        channels.forEach(ch => $container.appendChild(createBaseCard(ch, false)));
+        channels.forEach(ch => {
+            const div = document.createElement("div");
+            div.className = "channel-card";
+            div.innerHTML = `<div class="channel-card__logo-box"><img src="${ch.logo}" loading="lazy"></div><h3 class="channel-card__title">${ch.name}</h3>`;
+            div.onclick = () => playChannel(ch);
+            $container.appendChild(div);
+        });
     }
 
     function renderRelatedChannels(current) {
         $relatedList.innerHTML = "";
-        allChannels.filter(ch => ch.name !== current.name).sort(() => 0.5 - Math.random()).slice(0, 15).forEach(ch => $relatedList.appendChild(createBaseCard(ch, true)));
+        Object.assign($relatedList.style, {
+            display: "flex", flexWrap: "nowrap", overflowX: "auto", gap: "12px",
+            padding: "10px 5px", webkitOverflowScrolling: "touch", scrollbarWidth: "none"
+        });
+
+        const related = allChannels
+            .filter(ch => ch.name !== current.name)
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 15);
+
+        related.forEach(ch => {
+            const div = document.createElement("div");
+            div.className = "channel-card"; 
+            Object.assign(div.style, { width: "60px", height: "102px", flex: "0 0 auto", margin: "0" });
+            div.innerHTML = `
+                <div class="channel-card__logo-box" style="
+    height: 78px; 
+    width: 60px; 
+    border-radius: 6px; 
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    background-color: #181818;
+">
+    <img src="${ch.logo}" style="
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+    ">
+</div>
+<h3 class="channel-card__title" style="font-size: 0.8rem; padding: 4px 2px;">${ch.name}</h3>
+            `;
+            div.onclick = () => playChannel(ch);
+            $relatedList.appendChild(div);
+        });
     }
 
     async function initializeApplication() {
