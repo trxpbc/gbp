@@ -1049,7 +1049,7 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
 
     <!-- CENTERED BUTTONS INSIDE SLIDES -->
     <div class="banner-btns">
-        <a href="https://com-jio-media-jiotvplus.blogspot.com/?m=jio.php&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/mtpt" class="watch-btn">
+        <a href="https://com-jio-media-jiotvplus-pt.blogspot.com/?url=https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/sm.txt&m=jio.php&maint&cod=https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/mtpt" class="watch-btn">
         <i class="material-icons-round">play_arrow</i>
         Watch Now
     </a>
