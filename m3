@@ -1,3 +1,3 @@
 #EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz"
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/69.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1777818612~exp=1777840212~acl=/*~hmac=15288e832c1e90512ff7a13c45a5cf7d08c1d6f3dd0294a4f727904188c587bd"}
+#EXTHTTP:{"cookie":"__hdnea__=st=1777851012~exp=1777872612~acl=/*~hmac=d46ca4f0b593a6dbd5c69f66c56d80e0625c40671fa4f62af05b189e3496a756"}
