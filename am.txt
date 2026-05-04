@@ -713,7 +713,7 @@ body{
 
 // ]]>
 </script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script async src="https://ss.mrmnd.com/banner.js"></script>
 <script async src="https://ss.mrmnd.com/native.js"></script>
@@ -984,7 +984,23 @@ body{background:#000;color:#fff;overflow-x:hidden;padding-bottom:70px;}
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease; 
-}  
+} 
+.material-icons {
+  /* Font load hone tak text ko hide karne ke liye */
+  font-display: block;
+  
+  /* Starting text flash rokne ke liye fallback */
+  color: transparent;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Jab font load ho jaye, tab color dikhaye */
+.material-icons:not(:empty) {
+  color: inherit; /* Aapka default text color (e.g., white) */
+}
   
 </style>
 </head>
