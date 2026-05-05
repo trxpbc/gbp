@@ -966,6 +966,8 @@
     }
 
     async function initializeApplication() {
+        // --- YE WALI LINE ADD KARO AGAR MISSING HAI ---
+        if (window.lucide) { lucide.createIcons(); }
         jwplayer.key = PLAYER_KEY;
         $loader.style.display = "flex";
         allChannels = await loadPlaylist();
