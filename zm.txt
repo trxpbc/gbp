@@ -804,8 +804,8 @@
 
         // DRM Selection Logic
         if (channel.licenseUrl) {
-            drmConfig = { widevine: { url: channel.licenseUrl } };
-            drmUrlParam = `&drmScheme=widevine&drmLicense=${channel.licenseUrl}`;
+            drmConfig = { clearkey: { url: channel.licenseUrl } };
+            drmUrlParam = `&drmScheme=clearkey&drmLicense=${channel.licenseUrl}`;
         } 
         else if (channel.keyId && channel.key) {
             // Case: id:key dikhana hai
@@ -815,12 +815,12 @@
         else if (channel.keyId) {
             // Case: Sirf ID hai toh Denver URL dikhana hai
             const generatedUrl = `https://dev.denver69.fun/TP/key.php?id=${channel.keyId}`;
-            drmConfig = { widevine: { url: generatedUrl } };
-            drmUrlParam = `&drmScheme=widevine&drmLicense=${generatedUrl}`;
+            drmConfig = { clearkey: { url: generatedUrl } };
+            drmUrlParam = `&drmScheme=clearkey&drmLicense=${generatedUrl}`;
         }
 
         const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36";
-        const extraParams = `|Cookie=__hdnea__=${activeToken}&Origin=https://jiotv.com/&Referer=https://jiotv.com/&User-Agent=${userAgent}${drmUrlParam}`;
+        const extraParams = `|Cookie${activeToken}&Origin=https://jiotv.com/&Referer=https://jiotv.com/&User-Agent=${userAgent}${drmUrlParam}`;
         const finalUrlToShow = channel.url + extraParams;
 
         if (pushState) {
