@@ -819,7 +819,7 @@
             drmUrlParam = `&drmScheme=widevine&drmLicense=${generatedUrl}`;
         }
 
-        const userAgent = "plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0";
+        const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36";
         const extraParams = `|Cookie=__hdnea__=${activeToken}&Origin=https://jiotv.com/&Referer=https://jiotv.com/&User-Agent=${userAgent}${drmUrlParam}`;
         const finalUrlToShow = channel.url + extraParams;
 
