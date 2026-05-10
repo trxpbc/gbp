@@ -10,6 +10,21 @@
     "cookieUrl": ""
   },
   {
+    "name": "Voot",
+    "url": "https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/vott",
+    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
+  },
+  {
+    "name": "Sony LIV",
+    "url": "https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/slivd",
+    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
+  },
+  {
+    "name": "ZEE 5",
+    "url": "https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/z5s",
+    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
+  },
+  {
     "name": "Tata Play",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tp",
     "cookieUrl": ""
