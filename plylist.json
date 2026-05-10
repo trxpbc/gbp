@@ -1,12 +1,12 @@
 [
   {
     "name": "JioTV",
-    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/jtv",
-    "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtv",
+    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
   },
   {
     "name": "JioCinema",
-    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/jcnm",
-    "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jcnm",
+    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
   }
 ]
