@@ -2,11 +2,11 @@
   {
     "name": "JioTV",
     "url": "https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jtv",
-    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
+    "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
   },
   {
     "name": "JioCinema",
     "url": "https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jcinma",
-    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
+    "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
   }
 ]
