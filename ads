@@ -1,15 +1,15 @@
 #USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
 #EXTM3U
 #EXTINF:-1, Link 1
-https://com-jio-media-jiotvplus.blogspot.com/?m=2&maint&adx=true
+https://www.profitablecpmratenetwork.com/ykgd3e9qiv?key=ca66a27c04a4ce039fadb9ec82372d33
 #EXTINF:-1, Link 2
-https://fbfdbghgf.blogspot.com/?m=2&maint&adx=true
+https://www.profitablecpmratenetwork.com/ykgd3e9qiv?key=ca66a27c04a4ce039fadb9ec82372d33
 #EXTINF:-1, Link 3
-https://exo-player.blogspot.com/?m=2&maint&adx=true
+https://www.profitablecpmratenetwork.com/ykgd3e9qiv?key=ca66a27c04a4ce039fadb9ec82372d33
 #EXTINF:-1, Link 4
-https://d2h-free-dishtv-hd.blogspot.com/?m=2&maint&adx=true
+https://www.profitablecpmratenetwork.com/ykgd3e9qiv?key=ca66a27c04a4ce039fadb9ec82372d33
 #EXTINF:-1, Link 5
-https://exo-player.blogspot.com/?m=2&maint&adx=true
+https://www.profitablecpmratenetwork.com/ykgd3e9qiv?key=ca66a27c04a4ce039fadb9ec82372d33
 #EXTINF:-1, Link 6
 https://d2h-free-dishtv-hd.blogspot.com/?m=2&maint&adx=true
 #EXTINF:-1, Link 7
