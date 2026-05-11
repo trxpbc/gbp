@@ -1,7 +1,7 @@
 #USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
 #EXTM3U
 #EXTINF:-1, Link 1
-https://www.profitablecpmratenetwork.com/ykgd3e9qiv?key=ca66a27c04a4ce039fadb9ec82372d33
+https://m.youtube.com/
 #EXTINF:-1, Link 2
 https://www.profitablecpmratenetwork.com/ykgd3e9qiv?key=ca66a27c04a4ce039fadb9ec82372d33
 #EXTINF:-1, Link 3
