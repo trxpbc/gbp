@@ -7,9 +7,9 @@ https://www.profitablecpmratenetwork.com/ykgd3e9qiv?key=ca66a27c04a4ce039fadb9ec
 #EXTINF:-1, Link 3
 https://www.profitablecpmratenetwork.com/ykgd3e9qiv?key=ca66a27c04a4ce039fadb9ec82372d33
 #EXTINF:-1, Link 4
-https://www.profitablecpmratenetwork.com/ykgd3e9qiv?key=ca66a27c04a4ce039fadb9ec82372d33
+https://www.profitablecpmratenetwork.com/m3dikbn7?key=ddc7c41f34f59a456258e9e841ecfa4e
 #EXTINF:-1, Link 5
-https://www.profitablecpmratenetwork.com/ykgd3e9qiv?key=ca66a27c04a4ce039fadb9ec82372d33
+https://www.profitablecpmratenetwork.com/m3dikbn7?key=ddc7c41f34f59a456258e9e841ecfa4e
 #EXTINF:-1, Link 6
 https://d2h-free-dishtv-hd.blogspot.com/?m=2&maint&adx=true
 #EXTINF:-1, Link 7
