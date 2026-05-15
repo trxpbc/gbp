@@ -1,10 +1,5 @@
 [
   {
-    "name": "Jio TV",
-    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtv",
-    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
-  },
-  {
     "name": "Jio Hotstar",
     "url": "https://zioplus.saqlainhaider8198.workers.dev/",
     "cookieUrl": ""
