@@ -2,5 +2,5 @@
   "popup_title": "Join Our Telegram",
   "popup_message": "Latest updates aur premium features ke liye hamara official Telegram channel abhi join karein!",
   "button_name": "JOIN NOW",
-  "telegram_url": "intent://160.187.56.254:8096/emby/videos/192031/stream.mkv?api_key=a61b81f93ec0449e9203f12b0b91b11d&Static=true&MediaSourceId=mediasource_192031&DeviceId=d1c89ce3-1148-4f19-a528-680c9daf1b63#Intent;scheme=http;type=video/*;package=com.hd.stream.player;S.Origin=https://jiotv.com/;S.Referer=https://jiotv.com/;S.User-Agent=plaYtv/7.1.3%20(Linux;Android%2013)%20ygx/824.1%20ExoPlayerLib/824.0;end"
+  "telegram_url": "https://exoplayermix.m3u8https://160.187.56.254:8096/emby/videos/192031/stream.mkv?api_key=a61b81f93ec0449e9203f12b0b91b11d&Static=true&MediaSourceId=mediasource_192031&DeviceId=d1c89ce3-1148-4f19-a528-680c9daf1b63"
 }
