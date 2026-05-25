@@ -1,24 +1,24 @@
 {
   "popups": [
     {
-      "popup_title": "Join Our Telegram",
-      "popup_message": "Latest updates aur premium features ke liye hamara official Telegram channel abhi join karein!",
-      "button_name": "JOIN NOW",
-      "telegram_url": "https://exoplayermix.m3u8http://160.187.56.254:8096/emby/videos/192262/stream.mp4?api_key=a61b81f93ec0449e9203f12b0b91b11d&Static=true&MediaSourceId=mediasource_192262&DeviceId=d1c89ce3-1148-4f19-a528-680c9daf1b63",
-      "popup_image": "https://cdn.district.in/movies-assets/images/cinema/Jana-Nayagan_Cover-a67ffda0-ea04-11f0-b2d8-c9ed509e87fa.jpg"
-    },
-    {
-      "popup_title": "Premium Live IPTV Channels",
-      "popup_message": "Sabhie premium sports aur movies channels bina kisi buffering ke dekhne ke liye abhi click karein!",
+      "popup_title": "Accused",
+      "popup_message": "Thriller, Mystery, Drama",
       "button_name": "WATCH NOW",
-      "telegram_url": "https://exoplayermix.m3u8http://example.com/stream2.mp4",
-      "popup_image": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/banner2.png"
+      "telegram_url": "https://exoplayermix.m3u8http://160.187.56.254:8096/emby/videos/192262/stream.mp4?api_key=a61b81f93ec0449e9203f12b0b91b11d&Static=true&MediaSourceId=mediasource_192262&DeviceId=d1c89ce3-1148-4f19-a528-680c9daf1b63",
+      "popup_image": "https://stat4.bollywoodhungama.in/wp-content/uploads/2026/03/accused-flat-climax-255x191.jpeg"
     },
     {
-      "popup_title": "Update Available!",
-      "popup_message": "App ka naya version aa gaya hai jisme naye features aur fast player fix kiya gaya hai.",
-      "button_name": "UPDATE NOW",
-      "telegram_url": "https://t.me/your_official_channel",
+      "popup_title": "Dhurandhar: The Revenge",
+      "popup_message": "The story of the unknown men unfolds",
+      "button_name": "WATCH NOW",
+      "telegram_url": "https://exoplayermix.m3u8http://160.187.56.254:8096/emby/videos/192520/stream.mkv?api_key=a61b81f93ec0449e9203f12b0b91b11d&Static=true&MediaSourceId=mediasource_192520&DeviceId=d1c89ce3-1148-4f19-a528-680c9daf1b63",
+      "popup_image": "https://assets-in.bmscdn.com/discovery-catalog/events/et00478890-qcjwpaxgws-landscape.jpg"
+    },
+    {
+      "popup_title": "Assi",
+      "popup_message": "She didn't make it home that night",
+      "button_name": "WATCH NOW",
+      "telegram_url": "https://exoplayermix.m3u8http://160.187.56.254:8096/emby/videos/189873/stream.mkv?api_key=a61b81f93ec0449e9203f12b0b91b11d&Static=true&MediaSourceId=mediasource_189873&DeviceId=d1c89ce3-1148-4f19-a528-680c9daf1b63",
       "popup_image": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/banner3.png"
     }
   ]
