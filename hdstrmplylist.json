@@ -10,6 +10,11 @@
     "cookieUrl": ""
   },
   {
+    "name": "Sports",
+    "url": "https://sayan-json-3.pages.dev/Data/sports.json",
+    "cookieUrl": ""
+  },
+  {
     "name": "JioStar",
     "url": "https://jioplaylist.joinus-apiworker.workers.dev/",
     "cookieUrl": ""
