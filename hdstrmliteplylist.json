@@ -15,11 +15,6 @@
     "cookieUrl": ""
   },
   {
-    "name": "Jio TV",
-    "url": "https://jioplaylist.joinus-apiworker.workers.dev/",
-    "cookieUrl": ""
-  },
-  {
     "name": "Sports TV",
     "url": "https://sayan-json-3.pages.dev/Data/sports.json",
     "cookieUrl": ""
@@ -38,5 +33,10 @@
     "name": "TataPlay",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtv",
     "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
+  },
+  {
+    "name": "Jio TV",
+    "url": "https://jioplaylist.joinus-apiworker.workers.dev/",
+    "cookieUrl": ""
   }
 ]
