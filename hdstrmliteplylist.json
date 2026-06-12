@@ -1,8 +1,13 @@
 [
   {
-    "name": "Voot",
-    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Voto",
+    "name": "JioStar TV",
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtv",
     "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
+  },
+  {
+    "name": "JioStar",
+    "url": "https://servertvhub.site/jiotv+/playlist.php",
+    "cookieUrl": ""
   },
   {
     "name": "Hotstar TV",
@@ -10,14 +15,14 @@
     "cookieUrl": ""
   },
   {
-    "name": "JioStar TV",
-    "url": "http://gojojtv.gojosare123.workers.dev/",
-    "cookieUrl": ""
-  },
-  {
     "name": "Sports TV",
     "url": "https://sayan-json-3.pages.dev/Data/sports.json",
     "cookieUrl": ""
+  },
+  {
+    "name": "Voot",
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Voto",
+    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
   },
   {
     "name": "ZEE 5",
@@ -27,11 +32,6 @@
   {
     "name": "Sony LIV",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Slvo",
-    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
-  },
-  {
-    "name": "TataPlay",
-    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtv",
     "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
   },
   {
