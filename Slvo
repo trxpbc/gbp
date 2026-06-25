@@ -18,7 +18,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/SonySAB_MOB/WDVLive/index.mpd
 #EXTHTTP:{"cookie":"__hdnea__=st=1775542825~exp=1775564425~acl=/*~hmac=06e97755077b3f87affd6a68a22a0378fd80b813af64a71cff1c5467c84bc47f"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/Sony_SAB_MOB/WDVLive/index.mpd
 
-#EXTINF:-1 tvg-id="291" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Sony_HD.png",SET HD
+#EXTINF:-1 tvg-id="291" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Sony_HD.png",Set HD
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=null:null
 #EXTVLCOPT:http-referrer=https://jiotv.com/
@@ -72,7 +72,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/SonyMAX1_MOB/WDVLive/index.mpd
 #EXTHTTP:{"cookie":"__hdnea__=st=1775542825~exp=1775564425~acl=/*~hmac=06e97755077b3f87affd6a68a22a0378fd80b813af64a71cff1c5467c84bc47f"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/SonyMAX2_MOB/WDVLive/index.mpd
 
-#EXTINF:-1 tvg-id="697" group-title="Bengali" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyAATH.png",Sony aath
+#EXTINF:-1 tvg-id="697" group-title="Bengali" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyAATH.png",Sony Aath
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=ea3ad98932fd5df5ab26e5e845e4b941:86b6dd76818b8fa7a0bbd0f6113d65b0
 #EXTVLCOPT:http-referrer=https://jiotv.com/
@@ -153,7 +153,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYTam_MOB/WDVLive/index.mpd
 #EXTHTTP:{"cookie":"__hdnea__=st=1775542825~exp=1775564425~acl=/*~hmac=06e97755077b3f87affd6a68a22a0378fd80b813af64a71cff1c5467c84bc47f"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYTel_MOB/WDVLive/index.mpd
 
-#EXTINF:-1 tvg-id="3420" group-title="Kannada" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYKan.png",SONY YAY Kannada
+#EXTINF:-1 tvg-id="3420" group-title="Kannada" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYKan.png",Sony Yay Kannada
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=d14599f9e4a7524b8b136e6b445207cb:1c9ef4ef5471195b57914dc566c51e64
 #EXTVLCOPT:http-referrer=https://jiotv.com/
@@ -162,7 +162,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYTel_MOB/WDVLive/index.mpd
 #EXTHTTP:{"cookie":"__hdnea__=st=1775542825~exp=1775564425~acl=/*~hmac=06e97755077b3f87affd6a68a22a0378fd80b813af64a71cff1c5467c84bc47f"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYKan_MOB/WDVLive/index.mpd
 
-#EXTINF:-1 tvg-id="3423" group-title="Malyalam" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYMal.png",SONY YAY Malayalam
+#EXTINF:-1 tvg-id="3423" group-title="Malyalam" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYMal.png",Sony Yay Malayalam
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=1a968e4de13756e489eb98388b1c502c:114073cdb115690780b616e729ff9cd1
 #EXTVLCOPT:http-referrer=https://jiotv.com/
@@ -171,7 +171,7 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYKan_MOB/WDVLive/index.mpd
 #EXTHTTP:{"cookie":"__hdnea__=st=1775542825~exp=1775564425~acl=/*~hmac=06e97755077b3f87affd6a68a22a0378fd80b813af64a71cff1c5467c84bc47f"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/SonyYAYMal_MOB/WDVLive/index.mpd
 
-#EXTINF:-1 tvg-id="3424" group-title="Bengali" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYBen.png",SONY YAY Bengali
+#EXTINF:-1 tvg-id="3424" group-title="Bengali" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYBen.png",Sony Yay Bengali
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=d47f3928511059edaf93dd22bee23d37:f6adc793045dc831d82c2ea9f999bbc9
 #EXTVLCOPT:http-referrer=https://jiotv.com/
