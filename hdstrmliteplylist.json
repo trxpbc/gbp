@@ -38,10 +38,5 @@
     "name": "Sony LIV",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Slvo",
     "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
-  },
-  {
-    "name": "Jio TV",
-    "url": "https://jioplaylist.joinus-apiworker.workers.dev/",
-    "cookieUrl": ""
   }
 ]
