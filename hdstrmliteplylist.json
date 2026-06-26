@@ -5,6 +5,11 @@
     "cookieUrl": "https://mbcookie.amitbala1993.workers.dev"
   },
   {
+    "name": "Jio TV+",
+    "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/Jstar",
+    "cookieUrl": ""
+  },
+  {
     "name": "Voot",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Voto",
     "cookieUrl": "https://mbcookie.amitbala1993.workers.dev"
