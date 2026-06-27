@@ -10,6 +10,11 @@
     "cookieUrl": ""
   },
   {
+    "name": "Jio TV Old",
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/jtvold",
+    "cookieUrl": ""
+  },
+  {
     "name": "Voot",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Voto",
     "cookieUrl": "https://mbcookie.amitbala1993.workers.dev"
