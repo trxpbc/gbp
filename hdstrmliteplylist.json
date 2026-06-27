@@ -15,7 +15,7 @@
     "cookieUrl": "https://mbcookie.amitbala1993.workers.dev"
   },
   {
-    "name": "ZEE 5",
+    "name": "ZEE 5 SD",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Z5so",
     "cookieUrl": "https://mbcookie.amitbala1993.workers.dev"
   },
@@ -25,9 +25,14 @@
     "cookieUrl": ""
   },
   {
-    "name": "Sony LIV",
+    "name": "Sony LIV SD",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Slvo",
     "cookieUrl": "https://mbcookie.amitbala1993.workers.dev"
+  },
+  {
+    "name": "Sony LIV HD",
+    "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/Sliv",
+    "cookieUrl": ""
   },
   {
     "name": "Kids TV",
