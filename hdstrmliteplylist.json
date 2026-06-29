@@ -1,5 +1,10 @@
 [
   {
+    "name": "Jio TV Backup",
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtvo",
+    "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
+  },
+  {
     "name": "Jio TV",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtvo",
     "cookieUrl": "https://mbcookie.amitbala1993.workers.dev"
