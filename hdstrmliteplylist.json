@@ -1,16 +1,16 @@
 [ 
   {
-    "name": "Jio TV+",
+    "name": "JioTV Server1",
     "url": "https://yashiptvplaylist.livenoww.workers.dev/",
     "cookieUrl": ""
   },
   {
-    "name": "Jio TV Backup",
+    "name": "JioTV Server2",
     "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/jvt1",
     "cookieUrl": ""
   },
   {
-    "name": "Jio TV",
+    "name": "JioTV Server3",
     "url": "https://wispy-wave-3131.diwij76343.workers.dev/",
     "cookieUrl": ""
   },
