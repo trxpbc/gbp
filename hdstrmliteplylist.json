@@ -16,8 +16,13 @@
   },
   {
     "name": "JioTV Server4",
+    "url": "https://streamx-yashh.livenoww.workers.dev/",
+    "cookieUrl": ""
+  },
+  {
+    "name": "JioTV Backup",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtvo",
-    "cookieUrl": "https://yashiptvplaylist.livenoww.workers.dev"
+    "cookieUrl": "https://terminal-jio.07in.workers.dev/live/le-beta/maar-moj/144/index.mpd"
   },
   {
     "name": "Jio TV Old",
