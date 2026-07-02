@@ -70,12 +70,12 @@
     "cookieUrl": "https://mbcookie.amitbala1993.workers.dev"
   },
   {
-    "name": "Sports 1",
+    "name": "Star SportsTV 1 ",
     "url": "https://sayan-json-3.pages.dev/Data/Channels.json",
     "cookieUrl": ""
   },
   {
-    "name": "Sports 2",
+    "name": "Star SportsTV 2",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Sprts.json",
     "cookieUrl": ""
   }
