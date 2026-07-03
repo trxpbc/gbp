@@ -5,6 +5,11 @@
     "cookieUrl": "https://terminal-jio.07in.workers.dev/live/le-beta/maar-moj/144/index.mpd"
   },
   {
+    "name": "Tata Play",
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tp",
+    "cookieUrl": ""
+  },
+  {
     "name": "JioTV Server2",
     "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/jvt1",
     "cookieUrl": ""
