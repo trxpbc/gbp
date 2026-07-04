@@ -1,42 +1,92 @@
-[
+[ 
   {
-    "name": "Hotstar TV",
-    "url": "https://yowaimo.in/ZioGarmTara-JTV/playlist.php",
+    "name": "JioTV Server1",
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtvo",
+    "cookieUrl": "https://terminal-jio.07in.workers.dev/live/le-beta/maar-moj/144/index.mpd"
+  },
+  {
+    "name": "Tata Play",
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tp",
     "cookieUrl": ""
   },
   {
-    "name": "JioStar TV",
-    "url": "http://gojojtv.gojosare123.workers.dev/",
+    "name": "JioTV Server2",
+    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/jvt1",
     "cookieUrl": ""
   },
   {
-    "name": "Jio TV",
-    "url": "https://jioplaylist.joinus-apiworker.workers.dev/",
+    "name": "JioTV Server3",
+    "url": "https://wispy-wave-3131.diwij76343.workers.dev/",
     "cookieUrl": ""
   },
   {
-    "name": "Sports TV",
-    "url": "https://sayan-json-3.pages.dev/Data/sports.json",
+    "name": "JioTV Server4",
+    "url": "https://streamx-yashh.livenoww.workers.dev/",
     "cookieUrl": ""
   },
   {
-    "name": "ZEE 5",
-    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Z5so",
-    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
+    "name": "JioTV Server5",
+    "url": "https://yashiptvplaylist.livenoww.workers.dev/",
+    "cookieUrl": ""
+  },
+  {
+    "name": "JioTV Server6",
+    "url": "https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jtv",
+    "cookieUrl": "https://jiooo.cr7x.workers.dev/live/xyz/xyz/3145/index.mpd"
+  },
+  {
+    "name": "Jio TV Old",
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/jtvold",
+    "cookieUrl": ""
   },
   {
     "name": "Voot",
-    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Voto",
-    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
+    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/vot1",
+    "cookieUrl": ""
+  },
+  {
+    "name": "ZEE 5 SD",
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Z5so",
+    "cookieUrl": "https://terminal-jio.07in.workers.dev/live/le-beta/maar-moj/144/index.mpd"
+  },
+  {
+    "name": "ZEE 5 HD",
+    "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/Ze5hd",
+    "cookieUrl": ""
   },
   {
     "name": "Sony LIV",
-    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Slvo",
-    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
+    "url": "https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/slivd",
+    "cookieUrl": "https://jiooo.cr7x.workers.dev/live/xyz/xyz/3145/index.mpd"
   },
   {
-    "name": "TataPlay",
-    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtv",
-    "cookieUrl": "https://allinonereborn.online/jstrweb2/cookies.json"
+    "name": "SonyLIV Sports",
+    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/slvsprt",
+    "cookieUrl": ""
+  },
+  {
+    "name": "Sony LIV SD",
+    "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/SlvSD",
+    "cookieUrl": ""
+  },
+  {
+    "name": "Sony LIV HD",
+    "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/Sliv",
+    "cookieUrl": ""
+  },
+  {
+    "name": "Kids TV",
+    "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/Kids",
+    "cookieUrl": "https://mbcookie.amitbala1993.workers.dev"
+  },
+  {
+    "name": "Star SportsTV 1 ",
+    "url": "https://sayan-json-3.pages.dev/Data/Channels.json",
+    "cookieUrl": ""
+  },
+  {
+    "name": "Star SportsTV 2",
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Sprts.json",
+    "cookieUrl": ""
   }
 ]
