@@ -5,32 +5,17 @@
     "cookieUrl": "https://terminal-jio.07in.workers.dev/live/le-beta/maar-moj/144/index.mpd"
   },
   {
-    "name": "Tata Play",
-    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/tp",
-    "cookieUrl": ""
-  },
-  {
     "name": "JioTV Server2",
-    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/jvt1",
-    "cookieUrl": ""
-  },
-  {
-    "name": "JioTV Server3",
-    "url": "https://wispy-wave-3131.diwij76343.workers.dev/",
-    "cookieUrl": ""
-  },
-  {
-    "name": "JioTV Server4",
     "url": "https://streamx-yashh.livenoww.workers.dev/",
     "cookieUrl": ""
   },
   {
-    "name": "JioTV Server5",
+    "name": "JioTV Server3",
     "url": "https://yashiptvplaylist.livenoww.workers.dev/",
     "cookieUrl": ""
   },
   {
-    "name": "JioTV Server6",
+    "name": "JioTV Server4",
     "url": "https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/jtv",
     "cookieUrl": "https://jiooo.cr7x.workers.dev/live/xyz/xyz/3145/index.mpd"
   },
@@ -41,8 +26,8 @@
   },
   {
     "name": "Voot",
-    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/vot1",
-    "cookieUrl": ""
+    "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Voto",
+    "cookieUrl": "https://terminal-jio.07in.workers.dev/live/le-beta/maar-moj/144/index.mpd"
   },
   {
     "name": "ZEE 5 SD",
@@ -60,11 +45,6 @@
     "cookieUrl": "https://jiooo.cr7x.workers.dev/live/xyz/xyz/3145/index.mpd"
   },
   {
-    "name": "SonyLIV Sports",
-    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/slvsprt",
-    "cookieUrl": ""
-  },
-  {
     "name": "Sony LIV SD",
     "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/SlvSD",
     "cookieUrl": ""
@@ -73,6 +53,11 @@
     "name": "Sony LIV HD",
     "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/Sliv",
     "cookieUrl": ""
+  },
+  {
+    "name": "SonyLIV Sports",
+    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/slvsprt",
+    "cookieUrl": "https://terminal-jio.07in.workers.dev/live/le-beta/maar-moj/144/index.mpd"
   },
   {
     "name": "Kids TV",
