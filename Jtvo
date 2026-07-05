@@ -3,6 +3,20 @@
 # Generated: 30 Jun 2026, 18:20:21
 # Total Channels: 1195
 
+#EXTINF:-1 tvg-id="undefined" group-title="FIFA 2026" group-logo="https://i.postimg.cc/52qG6sKt/STREAMXi.png" tvg-logo="https://akamaividz2.zee5.com/image/upload/w_720,h_405,c_scale,f_webp,q_auto:eco/resources/0-9-zeecafehd/list/1920x1080list60cd7fc8b57c4e1baf1cd4f603413540.jpg",Unite8 Sports 1 HD
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0000:0000
+#EXTVLCOPT:http-user-agent=okhttp/4.12.0
+#EXTHTTP:{"cookie":"","Origin":"https://www.jiotv.com/","Referer":"https://www.jiotv.com/"}
+https://yowaimo.in/SF-SS/741567.m3u8
+
+#EXTINF:-1 tvg-id="undefined" group-title="FIFA 2026" group-logo="https://i.postimg.cc/52qG6sKt/STREAMXi.png" tvg-logo="https://akamaividz2.zee5.com/image/upload/w_720,h_405,c_scale,f_webp,q_auto:eco/resources/0-9-channel_2105335046/list/1920x1080list88f79d7c74df4d998da1bbd448f465ff.jpg",Unite8 Sports 2 HD
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=0000:0000
+#EXTVLCOPT:http-user-agent=okhttp/4.12.0
+#EXTHTTP:{"cookie":"","Origin":"https://www.jiotv.com/","Referer":"https://www.jiotv.com/"}
+https://yowaimo.in/SF-SS/745202.m3u8
+
 #EXTINF:-1 tvg-id="613" group-title="Assamese" group-logo="https://i.postimg.cc/52qG6sKt/STREAMXi.png" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Newslive.png",Newslive
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=0000:0000
