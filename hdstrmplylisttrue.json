@@ -2,7 +2,7 @@
   {
     "name": "JioTV Server1",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtvo",
-    "cookieUrl": "https://yowaimo.in/Sflex-Jio/154/manifest.mpd"
+    "cookieUrl": "https://jiotvmblive.cdn.jio.com/bpk-tv/Sony_SAB_MOB/WDVLive/index.mpd?__hdnea__=st=1783333850~exp=1783355450~acl=/*~hmac=ec4c80bd31e01a6b131175ab30f140f489db51cee58756355eb76ede686bef38"
   },
   {
     "name": "JioTV Server2",
