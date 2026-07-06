@@ -2,7 +2,7 @@
   {
     "name": "JioTV Server1",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtvo",
-    "cookieUrl": ""
+    "cookieUrl": "https://terminal-jio.07in.workers.dev/live/le-beta/maar-moj/144/index.mpd"
   },
   {
     "name": "JioTV Server2",
@@ -53,11 +53,6 @@
     "name": "Sony LIV HD",
     "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/Sliv",
     "cookieUrl": ""
-  },
-  {
-    "name": "SonyLIV Sports",
-    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/slvsprt",
-    "cookieUrl": "https://terminal-jio.07in.workers.dev/live/le-beta/maar-moj/144/index.mpd"
   },
   {
     "name": "Kids TV",
