@@ -65,6 +65,11 @@
     "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
   },
   {
+    "name": "Fifa Sports TV",
+    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/fifsprt",
+    "cookieUrl": ""
+  },
+  {
     "name": "Kids TV",
     "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/Kids",
     "cookieUrl": "https://mbcookie.amitbala1993.workers.dev"
