@@ -36,6 +36,11 @@
   },
   {
     "name": "Star TV HD",
+    "url": "https://raw.githubusercontent.com/trxpbc/JTpro/refs/heads/main/StrTVHD",
+    "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
+  },
+  {
+    "name": "Star TV SD",
     "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/strv",
     "cookieUrl": ""
   },
@@ -50,17 +55,17 @@
     "cookieUrl": ""
   },
   {
-    "name": "Sony LIV",
+    "name": "Sony LIV SD",
     "url": "https://raw.githubusercontent.com/ProTube/IPTV/refs/heads/maint/slivd",
     "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
   },
   {
-    "name": "Sony LIV SD",
+    "name": "Sony LIV HD",
     "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/SlvSD",
     "cookieUrl": ""
   },
   {
-    "name": "Sony LIV HD",
+    "name": "Sony LIV HD 2",
     "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/Sliv",
     "cookieUrl": ""
   },
