@@ -60,6 +60,11 @@
     "cookieUrl": ""
   },
   {
+    "name": "Sony LIV Sports",
+    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/slvsprt",
+    "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
+  },
+  {
     "name": "Kids TV",
     "url": "https://raw.githubusercontent.com/trxpbc/vtpi/refs/heads/main/Kids",
     "cookieUrl": "https://mbcookie.amitbala1993.workers.dev"
