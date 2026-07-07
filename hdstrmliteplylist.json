@@ -35,6 +35,11 @@
     "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
   },
   {
+    "name": "Star TV HD",
+    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/strv",
+    "cookieUrl": ""
+  },
+  {
     "name": "ZEE 5 SD",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Z5so",
     "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
