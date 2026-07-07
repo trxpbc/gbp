@@ -65,11 +65,6 @@
     "cookieUrl": ""
   },
   {
-    "name": "Sony LIV Sports",
-    "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/slvsprt",
-    "cookieUrl": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/cks.json"
-  },
-  {
     "name": "Fifa Sports TV",
     "url": "https://raw.githubusercontent.com/trxpbc/jtv/refs/heads/main/fifsprt",
     "cookieUrl": ""
