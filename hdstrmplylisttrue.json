@@ -1,12 +1,12 @@
 [ 
   {
-    "name": "JioTV Server1",
+    "name": "JioTV",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Jtvo",
     "cookieUrl": "https://terminal-jio.07in.workers.dev/live/le-beta/maar-moj/144/index.mpd"
   },
   {
-    "name": "JioTV Server2",
-    "url": "https://streamx-yashh.livenoww.workers.dev/",
+    "name": "JioTV+",
+    "url": "https://pllive.bmera5952.workers.dev/",
     "cookieUrl": ""
   },
   {
