@@ -60,11 +60,6 @@
     "cookieUrl": ""
   },
   {
-    "name": "Star SportsTV 1 ",
-    "url": "https://sayan-json-3.pages.dev/Data/Channels.json",
-    "cookieUrl": ""
-  },
-  {
     "name": "Star SportsTV 2",
     "url": "https://raw.githubusercontent.com/trxpbc/gbp/refs/heads/main/Sprts.json",
     "cookieUrl": ""
